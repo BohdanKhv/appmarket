@@ -1,0 +1,52 @@
+.icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    fill: var(--text-dark);
+    transition: var(--transition-duration);
+    cursor: text;
+}
+
+.icon svg {
+    font-size: 24px;
+    width: 1em;
+    height: 1em;
+    user-select: none;
+}
+
+.icon.icon-sm {
+    padding: 5px;
+}
+
+.icon.icon-sm svg {
+    font-size: 18px;
+}
+
+.icon.icon-lg svg {
+    font-size: 28px;
+}
+
+.icon.icon-primary {
+    fill: var(--color-primary);
+}
+
+.icon.icon-secondary {
+    fill: var(--text-dark);
+}
+
+.icon.icon-success {
+    fill: var(--color-success);
+}
+
+.icon.icon-danger {
+    fill: var(--color-danger);
+}
+
+.icon.icon-warning {
+    fill: var(--color-warning);
+}
+
+.icon.icon-info {
+    fill: var(--color-info);
+}

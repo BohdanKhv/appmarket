@@ -1,0 +1,133 @@
+
+/* Align */
+
+.text-wrap {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.text-center {
+    text-align: center;
+}
+.text-end {
+    text-align: end;
+}
+.text-start {
+    text-align: start;
+}
+
+/* Sizes */
+
+.fs-1 {
+    font-size: 3rem!important;
+    font-weight: 600;
+}
+.fs-2 {
+    font-size: 1.5rem!important;
+}
+.fs-3 {
+    font-size: 1.25rem!important;
+}
+.fs-4 {
+    font-size: 1rem!important;
+}
+.fs-5 {
+    font-size: 0.75rem!important;
+}
+.fs-6 {
+    font-size: 0.5rem!important;
+}
+
+/* line title */
+
+.text-1-line-title {
+    max-height: 18px;
+    font-size: 16px;
+    overflow: hidden;
+}
+.text-2-line-title {
+    max-height: 38px;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+/* Decoration */
+
+.text-hover {
+    cursor: pointer;
+    transition-duration: var(--transition-duration);
+}
+.text-hover:hover {
+    opacity: 0.8;
+}
+a {
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.block-hover {
+    cursor: pointer;
+    padding: 4px 8px;
+    transition-duration: var(--transition-duration);
+    border-radius: var(--border-radius);
+}
+.block-hover:hover {
+    background-color: var(--color-secondary);
+    opacity: 0.8;
+}
+.block:active {
+    opacity: 1;
+}
+
+.text-hover-primary,
+.text-hover-secondary {
+    color: var(--text-dark);
+    transition-duration: var(--transition-duration);
+}
+.text-hover-secondary:hover {
+    color: var(--text-dark);
+    opacity: 0.65;
+}
+.text-hover-primary:hover {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    opacity: 0.65;
+}
+
+.bold {
+    font-weight: 600;
+}
+.weight-normal {
+    font-weight: 400;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.white-space-nowrap {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .fs-1 {
+        font-size: 3rem!important;
+        font-weight: 600;
+    }
+    .fs-2 {
+        font-size: 1.25rem!important;
+    }
+    .fs-3 {
+        font-size: 1.05rem!important;
+    }
+    .fs-4 {
+        font-size: 0.85rem!important;
+    }
+    .fs-5 {
+        font-size: 0.65rem!important;
+    }
+    .fs-6 {
+        font-size: 0.5rem!important;
+    }
+}

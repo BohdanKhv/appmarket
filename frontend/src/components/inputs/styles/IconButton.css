@@ -1,0 +1,89 @@
+.icon-btn {
+    padding: 8px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    fill: var(--text-dark);
+    transition: var(--transition-duration);
+    border: none;
+}
+
+.icon-btn:hover {
+    background-color: var(--color-primary);
+    opacity: 0.9;
+    fill: #000000;
+}
+
+.icon-btn:active {
+    opacity: 1;
+}
+
+.icon-btn svg {
+    font-size: 24px;
+    width: 1em;
+    height: 1em;
+    user-select: none;
+}
+
+.icon-btn.icon-btn-sm {
+    padding: 5px;
+}
+
+.icon-btn.icon-btn-sm svg {
+    font-size: 18px;
+}
+
+.icon-btn.icon-btn-lg svg {
+    font-size: 28px;
+}
+
+.icon-btn:hover.icon-btn-primary {
+    background-color: var(--color-primary);
+    fill: #000000;
+}
+
+.icon-btn:hover.icon-btn-secondary {
+    background-color: var(--text-dark);
+    fill: var(--text-light);
+}
+
+.icon-btn:hover.icon-btn-success {
+    background-color: var(--color-success);
+    fill: #000000;
+}
+
+.icon-btn:hover.icon-btn-danger {
+    background-color: var(--color-danger);
+    fill: #000000;
+}
+
+.icon-btn:hover.icon-btn-warning {
+    background-color: var(--color-warning);
+    fill: #000000;
+}
+
+.icon-btn:hover.icon-btn-info {
+    background-color: var(--color-info);
+    fill: #000000;
+}
+
+.icon-btn.icon-btn-primary.icon-btn-fill {
+    fill: var(--text-light);
+    background-color: var(--color-primary);
+}
+
+.icon-btn.icon-btn-primary.icon-btn-fill:hover {
+    opacity: 0.8;
+}
+
+.icon-btn.icon-btn-primary.icon-btn-fill:active {
+    opacity: 1;
+}
+
+
+.icon-btn.icon-btn-xl svg {
+    font-size: 62px;
+}

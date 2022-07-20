@@ -1,0 +1,15 @@
+.image-main {
+    width: -webkit-fill-available;
+    /* min-width: max-content; */
+    display: flex;
+    min-height: inherit;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    /* object-fit: cover; */
+    object-fit: contain;
+    object-position: center;
+}
