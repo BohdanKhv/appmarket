@@ -16,10 +16,6 @@ const appSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    company: {
-        type: String,
-        required: true
-    },
     monetization: {
         type: String,
         required: true,
@@ -40,6 +36,38 @@ const appSchema = new mongoose.Schema({
     thumbnail: {
         type: String,
         required: false
+    },
+    media: {
+        video: {
+            type: String,
+            required: false
+        },
+        images: {
+            type: Array,
+            required: false
+        }
+    },
+    developer: {
+        company: {
+            type: String,
+            required: true
+        },
+        website: {
+            type: String,
+            required: false
+        },
+        email: {
+            type: String,
+            required: false
+        },
+        address: {
+            type: String,
+            required: false
+        },
+        privacyPolicy: {
+            type: String,
+            required: false
+        }
     },
     meta: {
         description: {

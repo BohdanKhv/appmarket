@@ -64,7 +64,7 @@ const getAppsBySearch = async (req, res) => {
 // Public
 const createApp = async (req, res) => {
     try {
-        const { domain, name, description, categories, tags, company, monetization } = req.body;
+        const { domain, name, description, categories, tags, company, monetization, devWebsite, email, address, privacy, video, images } = req.body;
 
         // Get domain from URL
         const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
@@ -95,7 +95,17 @@ const createApp = async (req, res) => {
             const appNew = new App({
                 domain: domainNew,
                 name: name,
-                company: company,
+                developer: {
+                    company: company,
+                    website: domainNew,
+                    email: email,
+                    address: address,
+                    privacyPolicy: privacy
+                },
+                media: {
+                    video: video,
+                    images: images
+                },
                 monetization: monetization,
                 user: req.user ? req.user._id : null,
                 description: description,
