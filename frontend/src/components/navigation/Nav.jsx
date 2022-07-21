@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { Input, Avatar } from '../'
-import { homeIcon, jobIcon, hatIcon, homeFillIcon, jobFillIcon, hatFillIcon, logoIcon, searchIcon } from '../../assets/img/icons'
+import { homeIcon, homeFillIcon, logoIcon, searchIcon, institutionIcon, institutionFillIcon, dataFillIcon, dataIcon, gameIcon, gameFillIcon } from '../../assets/img/icons'
 import "./styles/Nav.css"
 
 
@@ -49,15 +49,20 @@ const Nav = () => {
               {location.pathname === "/" ? homeFillIcon : homeIcon}
             <span>Home</span>
           </NavLink>
-          <NavLink to="/jobs" className="nav-item" 
-            ref={location.pathname === '/jobs' ? activeRef : null}>
-            {location.pathname === "/jobs" ? jobFillIcon : jobIcon}
-            <span>Popular</span>
-          </NavLink>
-          <NavLink to="/education" className="nav-item" 
-            ref={location.pathname === '/education' ? activeRef : null}>
-            {location.pathname === "/education" ? hatFillIcon : hatIcon}
+          <NavLink to="/categories" className="nav-item" 
+            ref={location.pathname === '/categories' ? activeRef : null}>
+            {location.pathname === "/categories" ? dataFillIcon : dataIcon}
             <span>Categories</span>
+          </NavLink>
+          <NavLink to="/categories/games" className="nav-item" 
+            ref={location.pathname === '/categories/games' ? activeRef : null}>
+            {location.pathname === "/categories/games" ? gameFillIcon : gameIcon}
+            <span>Games</span>
+          </NavLink>
+          <NavLink to="/categories/finance" className="nav-item" 
+            ref={location.pathname === '/categories/finance' ? activeRef : null}>
+            {location.pathname === "/categories/finance" ? institutionFillIcon : institutionIcon}
+            <span>Finance</span>
           </NavLink>
           <span className="nav-indicator" ref={indicatorRef}
             style={{

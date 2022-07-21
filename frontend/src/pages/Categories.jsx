@@ -5,17 +5,17 @@ import { Header, Tabs } from "../components"
 import { jobTabs } from "../assets/data/tabs"
 
 
-const Jobs = () => {
+const Categories = () => {
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState(searchParams.get('tab') ? parseInt(searchParams.get('tab')) : 0);
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        document.title = `Pathify | Jobs`
+        document.title = `Pathify | Categories`
     }, [])
 
     useEffect(() => {
-        document.title = `Pathify | Jobs - ${jobTabs[activeTab].label}`
+        document.title = `Pathify | Categories - ${jobTabs[activeTab].label}`
     }, [activeTab])
 
 
@@ -37,4 +37,4 @@ const Jobs = () => {
     )
 }
 
-export default Jobs
+export default Categories

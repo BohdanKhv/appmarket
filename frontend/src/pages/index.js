@@ -1,9 +1,7 @@
 import Home from "./Home";
-import Jobs from "./Jobs";
-import Educations from "./Educations";
+import Categories from "./Categories";
 
 export {
     Home,
-    Jobs,
-    Educations
+    Categories,
 }

@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Nav } from './components';
 import {
   Home,
-  Jobs,
-  Educations
+  Categories,
 } from './pages';
 
 
@@ -26,8 +25,7 @@ const App = () => {
           <Nav/>
           <Routes>
             <Route path='/' element={<Home/>} />
-            <Route path='/jobs' element={<Jobs/>} />
-            <Route path='/educations' element={<Educations/>} />
+            <Route path='/Categories' element={<Categories/>} />
           </Routes>
         </Router>
       </>
