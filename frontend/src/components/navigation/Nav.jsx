@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { setTheme } from '../../features/local/localSlice';
 import { logout } from '../../features/user/userSlice';
@@ -10,8 +10,9 @@ import "./styles/Nav.css"
 
 
 const Nav = () => {
-  const location = useLocation()
-  const dispatch = useDispatch()
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const activeRef = useRef(null);
   const indicatorRef = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -151,7 +152,7 @@ const Nav = () => {
           <Menu open={openMenu} setOpen={setOpenMenu}>
             <div className="menu-item border-bottom" onClick={() => {dispatch(setTheme(theme === "light" ? 'dark' : 'light'))}}><span className="menu-item-icon">{theme === "light" ? sunIcon : moonIcon}</span>Theme</div>
             {user ?
-              <div onClick={() => dispatch(logout())} className="menu-item"><span className="menu-item-icon">{logoutIcon}</span>Log out</div>
+              <div onClick={() => {dispatch(logout());}} className="menu-item"><span className="menu-item-icon">{logoutIcon}</span>Log out</div>
             :
               <>
                 <Link to="/auth/login" className="menu-item"><span className="menu-item-icon">{loginIcon}</span>Login</Link>

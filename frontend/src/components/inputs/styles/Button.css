@@ -30,6 +30,11 @@
     transition: 0.3s;
 }
 
+.btn.spinner svg {
+    width: 24.5px;
+    height: 24.5px;
+}
+
 .btn.btn-text {
     color: var(--text-dark)!important;
     fill: var(--text-dark)!important;

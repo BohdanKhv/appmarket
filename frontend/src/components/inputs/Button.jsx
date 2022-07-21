@@ -21,12 +21,12 @@ const Button = ({
         <a
             href={to}
             target={target || '_blank'}
-            className={`btn${variant ? ` btn-${variant}` : ''}${size ? ` btn-${size}` : ''}${color ? ` btn-${color}` : ''}${disabled ? ' btn-disabled' : ''}${loading ? ' btn-loading' : ''}${className ? ` ${className}` : ''}`}
+            className={`btn${variant ? ` btn-${variant}` : ''}${size ? ` btn-${size}` : ''}${color ? ` btn-${color}` : ''}${disabled ? ' btn-disabled spinner' : ''}${loading ? ' btn-loading' : ''}${className ? ` ${className}` : ''}`}
             onClick={onClick ? onClick : null}
             disabled={disabled}
         >
             { loading ? 
-                {spinnerIcon}
+                spinnerIcon
             :
                 <>
                     {startIcon && <span className="btn-start-icon">{startIcon}</span>}
@@ -37,12 +37,12 @@ const Button = ({
         </a>
         :
         <button
-            className={`btn${variant ? ` btn-${variant}` : ''}${size ? ` btn-${size}` : ''}${color ? ` btn-${color}` : ''}${disabled ? ' btn-disabled' : ''}${loading ? ' btn-loading' : ''}${className ? ` ${className}` : ''}`}
+            className={`btn${variant ? ` btn-${variant}` : ''}${size ? ` btn-${size}` : ''}${color ? ` btn-${color}` : ''}${disabled ? ' btn-disabled spinner' : ''}${loading ? ' btn-loading' : ''}${className ? ` ${className}` : ''}`}
             onClick={onClick ? onClick : null}
             disabled={disabled}
         >
             { loading ? 
-                {spinnerIcon}
+                spinnerIcon
             :
                 <>
                     {startIcon && <span className="btn-start-icon">{startIcon}</span>}

@@ -161,6 +161,9 @@ const userSlice = createSlice({
         // Login
         builder.addCase(login.pending, (state) => {
             state.isLoading = true;
+            state.isError = false;
+            state.msg = '';
+            state.isSuccess = false;
         });
         builder.addCase(login.fulfilled, (state, action) => {
             state.isLoading = false;

@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, resetUser } from '../../features/user/userSlice';
-import { Input } from '../../components';
+import { Input, Button } from '../../components';
 import { spinnerIcon } from '../../assets/img/icons';
 
 const Login = () => {
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: ''
     });
 
-    const { username, password } = formData;
+    const { email, password } = formData;
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Login = () => {
 
     useEffect(() => {
         if (isSuccess || user) {
-            navigate(`/${user.username}`);
+            navigate(`/`);
         }
     }, [user, isSuccess, msg, navigate, dispatch]);
 
@@ -40,13 +40,12 @@ const Login = () => {
     };
 
     const onSubmit = (e) => {
-        e.preventDefault();
 
-        if (username === '' || password === '') {
+        if (email === '' || password === '') {
             return;
         } else {
             const userData = {
-                username,
+                email,
                 password
             };
 
@@ -64,13 +63,13 @@ const Login = () => {
                     </h3>
                 </div>
                 <div>
-                    <form onSubmit={onSubmit}>
+                    <div>
                         <div className="py-2">
                             <Input
                                 type="text"
-                                name="username"
+                                name="email"
                                 label="Email"
-                                value={username}
+                                value={email}
                                 onChange={onChange}
                                 autoCompleteOn={true}
                             />
@@ -84,13 +83,17 @@ const Login = () => {
                                 onChange={onChange}
                             />
                         </div>
-                        <button type="submit" 
-                            className={`btn w-100 mt-3 mb-3 spinner${username.length > 0 && password.length > 0 ? ' btn-primary' : ' btn-secondary'}`}
+                        <Button
+                            color={email.length > 0 && password.length > 0 ? 'primary' : 'secondary'}
+                            className={`btn w-100 mt-3 mb-3`}
+                            disabled={!(email.length > 0 && password.length > 0) || isLoading}
+                            loading={isLoading}
+                            onClick={onSubmit}
                         >
-                            {isLoading ? spinnerIcon : 'Log in'}
-                        </button>
+                            Log in
+                        </Button>
                         {isError && <div className="text-danger mt-1 bg-err">{msg}</div>}
-                    </form>
+                    </div>
                     <NavLink to="/auth/forgot-password" className="text-hover text-primary">
                         Forgot password?
                     </NavLink>

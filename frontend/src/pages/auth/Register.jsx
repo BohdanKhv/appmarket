@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, resetUser } from '../../features/user/userSlice';
-import { Input } from '../../components';
+import { Input, Button } from '../../components';
 import { spinnerIcon } from '../../assets/img/icons';
 
 
@@ -79,7 +79,7 @@ const Register = () => {
                         Create an account
                     </h3>
                 </div>
-                <form onSubmit={onSubmit}>
+                <div onSubmit={onSubmit}>
                     <div className="py-2">
                         <Input
                             type="text"
@@ -109,18 +109,22 @@ const Register = () => {
                             onChange={onChange}
                         />
                     </div>
-                    <button 
-                        type="submit" 
-                        className={`btn w-100 mt-3 spinner${fullName.length > 0 && email.length > 0 && password.length > 0 ? ' btn-primary' : ''}`}
+                    <Button 
+                        type="submit"
+                        color={fullName.length > 0 && email.length > 0 && password.length > 0 ? 'primary' : 'secondary'}
+                        className={`btn w-100 mt-3`}
+                        disabled={!(fullName.length > 0 && email.length > 0 && password.length > 0) || isLoading}
+                        loading={isLoading}
+                        onClick={onSubmit}
                     >
-                        {isLoading ? spinnerIcon : 'Sign up'}
-                    </button>
+                        Sign up
+                    </Button>
                     {isError ? 
                         <div className="text-danger mt-1 bg-err">{msg}</div>
                     : clientErr ?
                         <div className="text-danger mt-1 bg-err">{clientErr}</div>
                     : null}
-                </form>
+                </div>
                 <p className="mt-4 text-end">
                     Already have an account? <NavLink className="text-hover text-primary" to="/auth/login">Log in</NavLink>
                 </p>
