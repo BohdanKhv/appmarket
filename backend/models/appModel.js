@@ -16,6 +16,15 @@ const appSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    company: {
+        type: String,
+        required: true
+    },
+    monetization: {
+        type: String,
+        required: true,
+        enum: ['free', 'paid', 'subscription', 'ads', 'other']
+    },
     description: {
         type: String,
         required: true

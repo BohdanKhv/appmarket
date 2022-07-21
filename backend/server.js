@@ -23,6 +23,7 @@ app.use('/api/apps', require('./routes/appRoutes'));
 app.use('/api/comments', require('./routes/commentRoutes'));
 app.use('/api/ratings', require('./routes/ratingRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/favorites', require('./routes/favoriteRoutes'));
 
 
 // Serve frontend
