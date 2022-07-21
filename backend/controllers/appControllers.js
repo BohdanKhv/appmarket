@@ -1,4 +1,5 @@
 const App = require('../models/appModel');
+const Developer = require('../models/developerModel');
 const cheerio = require('cheerio');
 const axios = require('axios');
 
@@ -14,6 +15,23 @@ const getApp = async (req, res) => {
             return res.status(200).json(app);
         } else {
             return res.status(404).json({ msg: 'App not found' });
+        }
+    } catch (err) {
+        return res.status(500).json({ msg: "Server error" });
+    }
+}
+
+
+// GET /apps/developer/:id
+// Returns all apps with the given developer
+// Public
+const getDeveloperApps = async (req, res) => {
+    try {
+        const apps = await App.find({ developer: req.params.id });
+        if (apps) {
+            return res.status(200).json(apps);
+        } else {
+            return res.status(404).json({ msg: 'Apps not found' });
         }
     } catch (err) {
         return res.status(500).json({ msg: "Server error" });
@@ -64,7 +82,13 @@ const getAppsBySearch = async (req, res) => {
 // Public
 const createApp = async (req, res) => {
     try {
-        const { domain, name, description, categories, tags, company, monetization, devWebsite, email, address, privacy, video, images } = req.body;
+        const developer = await Developer.findOne({ user: req.user._id });
+
+        if (!developer) {
+            return res.status(404).json({ msg: 'You are not a developer, please register a developer page.' });
+        }
+
+        const { domain, name, description, categories, tags, monetization, video, images } = req.body;
 
         // Get domain from URL
         const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
@@ -95,13 +119,7 @@ const createApp = async (req, res) => {
             const appNew = new App({
                 domain: domainNew,
                 name: name,
-                developer: {
-                    company: company,
-                    website: domainNew,
-                    email: email,
-                    address: address,
-                    privacyPolicy: privacy
-                },
+                developer: developer,
                 media: {
                     video: video,
                     images: images
@@ -153,6 +171,7 @@ const updateApp = async (req, res) => {
 
 module.exports = {
     getApp,
+    getDeveloperApps,
     getAppsByCategory,
     getAppsBySearch,
     createApp,

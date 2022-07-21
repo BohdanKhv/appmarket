@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
             'Please add a valid email'
         ]
     },
+    type: {
+        type: String,
+        enum: ['user', 'developer'],
+        default: 'user'
+    },
     password: {
         type: String,
         required: [true, 'Please add a password'],

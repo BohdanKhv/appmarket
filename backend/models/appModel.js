@@ -12,6 +12,11 @@ const appSchema = new mongoose.Schema({
         ref: 'User',
         required: false
     },
+    developer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Developer',
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -44,28 +49,6 @@ const appSchema = new mongoose.Schema({
         },
         images: {
             type: Array,
-            required: false
-        }
-    },
-    developer: {
-        company: {
-            type: String,
-            required: true
-        },
-        website: {
-            type: String,
-            required: false
-        },
-        email: {
-            type: String,
-            required: false
-        },
-        address: {
-            type: String,
-            required: false
-        },
-        privacyPolicy: {
-            type: String,
             required: false
         }
     },
