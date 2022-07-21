@@ -155,7 +155,7 @@
 }
 
 .input-sm input {
-    height: 20px;
+    height: calc(var(--nav-height-sm) - 16px - 8px);
     padding: 8px;
 }
 .input-container.input-sm label {

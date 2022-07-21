@@ -5,6 +5,12 @@ import { Nav } from './components';
 import {
   Home,
   Categories,
+  Developer,
+  Profile,
+  Favorite,
+  Settings,
+  Dashboard,
+
   Login,
   Register,
   ForgotPassword,
@@ -29,6 +35,13 @@ const App = () => {
           <Nav/>
           <Routes>
             <Route path='/' element={<Home/>} />
+            <Route path='/categories' element={<Categories/>} />
+            <Route path='/dashboard' element={<Dashboard/>} />
+            <Route path='/developer/:id' element={<Developer/>} />
+            <Route path='/profile' element={<Profile/>} />
+            <Route path='/favorite' element={<Favorite/>} />
+            <Route path='/settings' element={<Settings/>} />
+
             <Route path='/auth/login' element={<Login/>} />
             <Route path='/auth/register' element={<Register/>} />
             <Route path='/auth/forgotPassword' element={<ForgotPassword/>} />
