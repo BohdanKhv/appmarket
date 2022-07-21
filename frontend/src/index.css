@@ -17,6 +17,7 @@
 
   --text-dark: #ffffff;
   --text-light: #000000;
+  --box-shadow-sm: 0 2px 5px rgb(0 0 0 / 20%);
   --box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
   --box-shadow-hover: 0 12px 22px rgb(0 0 0 / 32%);
 
@@ -44,7 +45,7 @@
   --color-secondary: #f6f7f8;
   --color-tertiary: #fafafa;
   --color-border: #cccccc;
-  --color-primary: #4791e6;
+  --color-primary: #327cd1;
 
   --text-light: #ffffff;
   --text-dark: #2E2E3B;

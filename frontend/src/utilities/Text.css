@@ -60,6 +60,15 @@
 .text-hover:hover {
     opacity: 0.8;
 }
+
+.hover {
+    cursor: pointer;
+    transition-duration: var(--transition-duration);
+}
+.hover:hover {
+    background-color: var(--color-secondary);
+}
+
 a {
     color: var(--text-dark);
     text-decoration: none;
@@ -94,6 +103,15 @@ a {
 
 .text-secondary {
     opacity: 0.65;
+}
+.text-primary {
+    color: var(--color-primary);
+}
+.text-danger {
+    color: var(--color-danger);
+}
+.text-warning {
+    color: var(--color-warning);
 }
 
 .bold {

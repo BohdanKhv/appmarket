@@ -114,6 +114,9 @@
 .bg-info {
     background-color: var(--color-info);
 }
+.bg-main {
+    background-color: var(--color-main);
+}
 
 .bg-hover {
     transition-duration: var(--transition-duration);

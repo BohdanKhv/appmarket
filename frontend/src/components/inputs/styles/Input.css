@@ -37,8 +37,8 @@
 
 .input-container:focus-within label {
     transform: translate(0, 8px) scale(0.7);
-    color: #000000;
-    fill: #000000;
+    color: var(--text-dark);
+    fill: var(--text-dark);
 }
 
 .input-container .filled {
@@ -53,8 +53,8 @@
     transform: translate(0, 18px) scale(1);
     transform-origin: top left;
     transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-    color: #000000;
-    fill: #000000;
+    color: var(--text-dark);
+    fill: var(--text-dark);
     font-size: 14px;
     line-height: 1;
     left: 16px;
@@ -80,7 +80,8 @@
 }
 
 .input-container:focus-within input::placeholder {
-    color: #202020
+    color: var(--text-dark);
+    fill: var(--text-dark);
 }
 
 .input-container input::placeholder {
@@ -97,6 +98,7 @@
     outline: none;
     box-shadow: none;
     background-color: var(--color-secondary);
+    color: var(--text-dark);
     transition: 300ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
 
@@ -113,13 +115,13 @@
 }
 
 .input-container.input-danger label {
-    color: #000000;
-    fill: #000000;
+    color: var(--text-dark);
+    fill: var(--text-dark);
 }
 
 .input-container.input-success label {
-    color: #000000;
-    fill: #000000;
+    color: var(--text-dark);
+    fill: var(--text-dark);
 }
 
 .input-container.input-resize:focus-within label,

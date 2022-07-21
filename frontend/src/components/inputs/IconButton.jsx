@@ -8,7 +8,7 @@ const IconButton = ({
     disabled,
     className,
     title,
-    fill
+    fill,
 }) => {
 
     return (

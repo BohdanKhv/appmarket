@@ -8,7 +8,6 @@ const theme = localStorage.getItem('theme');
 
 const initialState = {
     theme: theme ? theme : 'light',
-    ethPrice: 0,
 }
 
 
@@ -23,9 +22,6 @@ const localSlice = createSlice({
             localStorage.setItem('theme', action.payload);
         },
     },
-    extraReducers: (builder) => {
-        // Fetch eth price
-    }
 });
 
 

@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import './styles/Avatar.css'
 
-const Avatar = ({image, name, size, width, height, className}) => {
+const Avatar = ({image, name, size, width, height, className, onClick}) => {
   const [loading, setLoading] = useState(true)
   const imageRef = useRef(null)
 
@@ -42,6 +42,7 @@ const Avatar = ({image, name, size, width, height, className}) => {
   return (
     <div 
       className={`avatar${size ? ` avatar-${size}` : ''}${className ? ` ${className}` : ''}`}
+      onClick={onClick}
       style={{
         backgroundColor: stringToColor(name),
         width: width ? width : undefined,

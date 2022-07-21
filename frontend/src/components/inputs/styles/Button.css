@@ -299,9 +299,10 @@
 }
 
 .btn:hover {
-    box-shadow: 2px 2px 2px var(--text-dark);
+    opacity: 0.8;
+    box-shadow: var(--box-shadow-sm);
 }
 
 .btn:active {
-    box-shadow: none;
+    opacity: 1;
 }

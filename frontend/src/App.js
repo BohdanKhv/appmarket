@@ -5,6 +5,10 @@ import { Nav } from './components';
 import {
   Home,
   Categories,
+  Login,
+  Register,
+  ForgotPassword,
+  ResetPassword,
 } from './pages';
 
 
@@ -25,7 +29,11 @@ const App = () => {
           <Nav/>
           <Routes>
             <Route path='/' element={<Home/>} />
-            <Route path='/Categories' element={<Categories/>} />
+            <Route path='/auth/login' element={<Login/>} />
+            <Route path='/auth/register' element={<Register/>} />
+            <Route path='/auth/forgotPassword' element={<ForgotPassword/>} />
+            <Route path='/auth/resetPassword' element={<ResetPassword/>} />
+            <Route path='/categories' element={<Categories/>} />
           </Routes>
         </Router>
       </>

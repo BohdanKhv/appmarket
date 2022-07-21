@@ -7,6 +7,7 @@ import CustomSelect from "./inputs/CustomSelect";
 import Nav from "./navigation/Nav";
 import Header from "./navigation/Header";
 import Tabs from "./navigation/Tabs";
+import Menu from "./navigation/Menu";
 
 import SearchField from "./common/SearchField";
 import Image from "./common/Image";
@@ -26,6 +27,7 @@ export {
     Nav,
     Header,
     Tabs,
+    Menu,
 
     SearchField,
     Image,

@@ -1,3 +1,4 @@
+import { spinnerIcon } from '../../assets/img/icons';
 import './styles/Button.css';
 
 const Button = ({
@@ -25,7 +26,7 @@ const Button = ({
             disabled={disabled}
         >
             { loading ? 
-                'Loading...'
+                {spinnerIcon}
             :
                 <>
                     {startIcon && <span className="btn-start-icon">{startIcon}</span>}
@@ -41,7 +42,7 @@ const Button = ({
             disabled={disabled}
         >
             { loading ? 
-                'Loading...'
+                {spinnerIcon}
             :
                 <>
                     {startIcon && <span className="btn-start-icon">{startIcon}</span>}

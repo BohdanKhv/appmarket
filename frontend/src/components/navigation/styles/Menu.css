@@ -1,0 +1,59 @@
+.menu {
+    position: absolute;
+    right: 0;
+    top: 48px;
+    background-color: var(--color-main);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0) translate3d(100px, -100px, 0);
+}
+
+.menu-btn {
+    cursor: pointer;
+}
+.menu-btn:hover {
+    opacity: 0.8;
+}
+.menu-btn:active {
+    opacity: 1;
+}
+
+.menu-open {
+    animation: scale var(--transition-duration) forwards;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0px 16px;
+    height: 48px;
+    cursor: pointer;
+    transition-duration: var(--transition-duration);
+    white-space: nowrap;
+}
+.menu-item:hover {
+    background-color: var(--color-secondary);
+}
+
+.menu-item-icon {
+    object-fit: cover;
+    margin-right: 32px;
+    height: 24px;
+    width: 24px;
+    flex-shrink: 0;
+    fill: var(--text-dark);
+}
+
+
+@keyframes scale {
+    0% {
+        opacity: 0;
+        transform: scale(0) translate3d(100px, -100px, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translate3d(0, 0, 0);
+    }
+}
