@@ -90,13 +90,17 @@ const createApp = async (req, res) => {
 
         const { domain, name, description, categories, tags, monetization, video, images } = req.body;
 
+        if(!domain || !name) {
+            return res.status(400).json({ msg: 'Please fill in all required fields' });
+        }
+
         // Get domain from URL
         const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
         const domainMatch = domainRegex.exec(domain);
         const domainNew = domainMatch[1];
 
         // Check if app already exists
-        const app = App.findOne({ domain: domainNew });
+        const app = await App.findOne({ domain: domainNew });
 
         if (app) {
             return res.status(409).json({ msg: 'App already exists' });
@@ -108,12 +112,12 @@ const createApp = async (req, res) => {
             const $ = cheerio.load(appInfo.data);
 
             const appMeta = {
-                description: $('meta[name="description"]').attr('content'),
-                keywords: $('meta[name="keywords"]').attr('content'),
-                title: $('title').text(),
-                author: $('meta[name="author"]').attr('content'),
-                icon: $('link[rel="icon"]').attr('href'),
-                thumbnail: $('meta[property="og:image"]').attr('content'),
+                description: $('meta[name="description"]')?.attr('content'),
+                keywords: $('meta[name="keywords"]')?.attr('content'),
+                title: $('title')?.text(),
+                author: $('meta[name="author"]')?.attr('content'),
+                icon: $('link[rel="icon"]')?.attr('href'),
+                thumbnail: $('meta[property="og:image"]')?.attr('content'),
             }
 
             const appNew = new App({
@@ -133,10 +137,14 @@ const createApp = async (req, res) => {
                 verified: false
             });
 
-            await appNew.save();
-            return res.status(201).json(appNew);
+            try {
+                await appNew.save();
+                return res.status(201).json(appNew);
+            } catch (err) {
+                return res.status(500).json({ msg: "Server error" });
+            }
         } catch (err) {
-            return res.status(500).json({ msg: "Was not able to get app info, please try again later" });
+            return res.status(500).json({ msg: "Not able to get website info, please check the URL and try again." });
         }
     } catch (err) {
         return res.status(500).json({ msg: "Server error" });

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useSearchParams } from 'react-router-dom'
 import { Header, Tabs } from "../components"
-import { jobTabs } from "../assets/data/tabs"
+import { dashboardTabs } from "../assets/data/tabs"
 
 
 const Categories = () => {
@@ -15,7 +15,7 @@ const Categories = () => {
     }, [])
 
     useEffect(() => {
-        document.title = `Pathify | Categories - ${jobTabs[activeTab].label}`
+        document.title = `Pathify | Categories - ${dashboardTabs[activeTab].label}`
     }, [activeTab])
 
 
@@ -27,7 +27,7 @@ const Categories = () => {
                     <Tabs
                         onChange={setActiveTab}
                         active={activeTab}
-                        items={jobTabs}
+                        items={dashboardTabs}
                     />
                     <div className="results-container border-top pt-3">
                     </div>

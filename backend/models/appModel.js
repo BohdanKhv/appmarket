@@ -23,16 +23,16 @@ const appSchema = new mongoose.Schema({
     },
     monetization: {
         type: String,
-        required: true,
+        required: false,
         enum: ['free', 'paid', 'subscription', 'ads', 'other']
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     categories: {
         type: Array,
-        required: true
+        required: false
     },
     tags: {
         type: Array,

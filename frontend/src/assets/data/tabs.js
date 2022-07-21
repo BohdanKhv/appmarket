@@ -1,21 +1,17 @@
-import { mapFillIcon, mapIcon, dataIcon, dataFillIcon, compareIcon, compareFillIcon } from '../img/icons'
+import { appIcon, appFillIcon, institutionIcon, institutionFillIcon } from '../img/icons'
 
-const jobTabs = [
+const dashboardTabs = [
     {
-        label: "All Data",
-        icon: dataIcon,
-        fillIcon: dataFillIcon
+        label: "Developer",
+        icon: institutionIcon,
+        fillIcon: institutionFillIcon
     }, {
-        label: "Map",
-        icon: mapIcon,
-        fillIcon: mapFillIcon
-    }, {
-        label: "Compare",
-        icon: compareIcon,
-        fillIcon: compareFillIcon
-    }, 
+        label: "Apps",
+        icon: appIcon,
+        fillIcon: appFillIcon
+    },
 ]
 
 export {
-    jobTabs
+    dashboardTabs
 }

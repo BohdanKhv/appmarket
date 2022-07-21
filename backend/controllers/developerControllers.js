@@ -1,4 +1,5 @@
 const Developer = require('../models/developerModel');
+const User = require('../models/userModel');
 
 
 
@@ -47,6 +48,8 @@ const createDeveloper = async (req, res) => {
             return res.status(400).json({ msg: 'Developer already exists' });
         }
 
+        const user = await User.findById(req.user._id);
+
         const newDeveloper = new Developer({
             user: req.user._id,
             name: req.body.name,
@@ -63,8 +66,12 @@ const createDeveloper = async (req, res) => {
 
         await newDeveloper.save();
 
+        user.type = 'developer';
+        await user.save();
+
         return res.status(201).json(newDeveloper);
     } catch (err) {
+        console.log(err);
         return res.status(500).json({ msg: "Server error" });
     }
 }

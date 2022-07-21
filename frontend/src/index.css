@@ -137,7 +137,7 @@ table th {
 
 @media (max-width: 768px) {
   .content {
-    /* padding: 0 16px calc(var(--sidebar-height) + 16px) 16px; */
+    padding: 0 8px;
   }
 
   .side-bar-width {

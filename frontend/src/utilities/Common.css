@@ -201,6 +201,24 @@
     cursor: pointer;
 }
 
+/* Box */
+.box {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-sm);
+    cursor: pointer;
+    width: 300px;
+    height: 200px;
+    transition-duration: var(--transition-duration);
+    display: flex;
+}
+.box:hover {
+    box-shadow: var(--box-shadow);
+    background-color: var(--color-secondary);
+}
+.box:active {
+    opacity: 0.8;
+}
+
 @media (max-width: 768px) {
     .d-none-sm {
         display: none;

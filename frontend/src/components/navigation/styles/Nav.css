@@ -21,9 +21,8 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    width: 50px;
+    width: 100%;
     transition-duration: var(--transition-duration);
-    margin-right: 12px;
 }
 
 .nav .logo svg {
@@ -61,7 +60,7 @@
 .nav-left-links {
     position: relative;
     display: flex;
-    gap: 12px;
+    gap: 6px;
     flex-grow: 1;
 }
 
@@ -153,6 +152,10 @@
     .nav-mobile .logo {
         display: flex;
         align-items: center;
+    }
+
+    .nav-mobile {
+        padding: 0 8px;
     }
 
     .nav-mobile .logo svg {
