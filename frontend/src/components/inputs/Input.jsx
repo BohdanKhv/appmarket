@@ -16,12 +16,14 @@ const Input = ({
     variant,
     resize,
     onClick,
-    onKeyDown
+    onKeyDown,
+    inputStyle,
+    size
 }) => {
     return (
         <div 
         onClick={onClick}
-        className={`input-container${error ? ' input-danger' : ''}${success ? ' input-success' : ''}${variant ? ` input-${variant}` : ''}${resize ? ' input-resize' : ''}`}>
+        className={`input-container${error ? ' input-danger' : ''}${success ? ' input-success' : ''}${variant ? ` input-${variant}` : ''}${resize ? ' input-resize' : ''}${size ? ` input-${size}` : ''}`}>
             <input
                 onKeyDown={onKeyDown}
                 className={`${error ? 'input-danger' : ''}${success ? ' input-success' : ''}`}
@@ -32,6 +34,7 @@ const Input = ({
                 placeholder={placeholder}
                 disabled={loading || disabled}
                 autoComplete={autoComplete ? 'on' : 'off'}
+                style={inputStyle}
             />
             <label 
                 className={value && 'filled'} 

@@ -4,13 +4,14 @@ import Input from "./inputs/Input";
 import Icon from "./inputs/Icon";
 import CustomSelect from "./inputs/CustomSelect";
 
-import Sidebar from "./navigation/Sidebar";
+import Nav from "./navigation/Nav";
 import Header from "./navigation/Header";
 import Tabs from "./navigation/Tabs";
 
 import SearchField from "./common/SearchField";
 import Image from "./common/Image";
 import DisplayImage from "./common/DisplayImage";
+import Avatar from "./common/Avatar";
 
 import Skeleton from "./feedback/Skeleton";
 
@@ -22,13 +23,14 @@ export {
     Icon,
     CustomSelect,
 
-    Sidebar,
+    Nav,
     Header,
     Tabs,
 
     SearchField,
     Image,
     DisplayImage,
+    Avatar,
 
     Skeleton,
 }

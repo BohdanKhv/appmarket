@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Sidebar } from './components';
+import { Nav } from './components';
 import {
   Home,
   Jobs,
@@ -23,7 +23,7 @@ const App = () => {
     return (
       <>
         <Router>
-          <Sidebar/>
+          <Nav/>
           <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/jobs' element={<Jobs/>} />

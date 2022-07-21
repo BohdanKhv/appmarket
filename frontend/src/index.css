@@ -22,7 +22,7 @@
 
   --sidebar-width: 100px;
   --sidebar-height: 80px;
-  --nav-height: 60px;
+  --nav-height: 64px;
   --nav-height-sm: 50px;
 }
 
@@ -79,7 +79,9 @@ body {
 }
 
 .content {
-  padding: 0 16px 0 calc(var(--sidebar-width) + 16px);
+  /* padding: 0 16px 0 calc(var(--sidebar-width) + 16px); */
+  padding: 0 16px;
+  margin-top: calc(var(--nav-height) + 16px);
 }
 .content-body {
   padding: 16px 0;
@@ -134,7 +136,7 @@ table th {
 
 @media (max-width: 768px) {
   .content {
-    padding: 0 16px calc(var(--sidebar-height) + 16px) 16px;
+    /* padding: 0 16px calc(var(--sidebar-height) + 16px) 16px; */
   }
 
   .side-bar-width {
