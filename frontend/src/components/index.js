@@ -3,11 +3,13 @@ import IconButton from "./inputs/IconButton";
 import Input from "./inputs/Input";
 import Icon from "./inputs/Icon";
 import CustomSelect from "./inputs/CustomSelect";
+import Search from "./inputs/Search";
 
 import Nav from "./navigation/Nav";
 import Header from "./navigation/Header";
 import Tabs from "./navigation/Tabs";
 import Menu from "./navigation/Menu";
+import UserMenu from "./navigation/UserMenu";
 
 import SearchField from "./common/SearchField";
 import Image from "./common/Image";
@@ -23,11 +25,13 @@ export {
     Input,
     Icon,
     CustomSelect,
+    Search,
 
     Nav,
     Header,
     Tabs,
     Menu,
+    UserMenu,
 
     SearchField,
     Image,
