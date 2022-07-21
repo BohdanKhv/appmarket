@@ -18,7 +18,6 @@ const Home = () => {
                         <div
                             className="fs-2 py-3"
                         >
-                            Home
                         </div>
                     </div>
                 </div>
