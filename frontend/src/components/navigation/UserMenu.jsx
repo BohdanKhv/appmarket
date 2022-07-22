@@ -3,7 +3,8 @@ import { setTheme } from '../../features/local/localSlice';
 import { logout } from '../../features/user/userSlice';
 import { Link } from 'react-router-dom';
 import { Menu, Avatar, IconButton } from '../';
-import { loginIcon, logoutIcon, registerIcon, sunIcon, moonIcon, userIcon, settingsIcon, appIcon, likeIcon } from '../../assets/img/icons';
+import { loginIcon, logoutIcon, registerIcon, sunIcon, moonIcon, userIcon } from '../../assets/img/icons';
+import { navUser } from '../../assets/data/tabs';
 
 const UserMenu = ({openMenu, setOpenMenu}) => {
     const dispatch = useDispatch();
@@ -27,10 +28,9 @@ const UserMenu = ({openMenu, setOpenMenu}) => {
                 <div className="menu-item border-bottom" onClick={() => {dispatch(setTheme(theme === "light" ? 'dark' : 'light'))}}><span className="menu-item-icon">{theme === "light" ? sunIcon : moonIcon}</span>Theme</div>
                 {user ?
                 <>
-                    <Link to="/profile" className="menu-item"><span className="menu-item-icon">{userIcon}</span><span>Profile</span></Link>
-                    <Link to="/developer" className="menu-item"><span className="menu-item-icon">{appIcon}</span><span>Developer</span></Link>
-                    <Link to="/favorite" className="menu-item"><span className="menu-item-icon">{likeIcon}</span><span>Favorite</span></Link>
-                    <Link to="/setting" className="menu-item"><span className="menu-item-icon">{settingsIcon}</span><span>Settings</span></Link>
+                    {navUser.map((item, index) => (
+                        <Link to={item.path} className="menu-item"><span className="menu-item-icon">{item.icon}</span><span>{item.label}</span></Link>
+                    ))}
                     <div onClick={() => {dispatch(logout());}} className="menu-item border-top"><span className="menu-item-icon">{logoutIcon}</span>Sign out</div>
                 </>
                 :

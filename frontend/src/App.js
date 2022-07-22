@@ -4,17 +4,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Nav } from './components';
 import {
   Home,
-  Categories,
   Developer,
   Profile,
-  Favorite,
-  Settings,
+
   Dashboard,
+  DetailedApp,
+
+  Favorite,
 
   Login,
   Register,
-  ForgotPassword,
   ResetPassword,
+  ForgotPassword
 } from './pages';
 
 
@@ -35,18 +36,16 @@ const App = () => {
           <Nav/>
           <Routes>
             <Route path='/' element={<Home/>} />
-            <Route path='/categories' element={<Categories/>} />
-            <Route path='/developer' element={<Dashboard/>} />
-            <Route path='/developer/:id' element={<Developer/>} />
-            <Route path='/profile' element={<Profile/>} />
-            <Route path='/favorite' element={<Favorite/>} />
-            <Route path='/settings' element={<Settings/>} />
+            <Route path='/user/developer' element={<Dashboard/>} />
+            <Route path='/user/profile' element={<Profile/>} />
+            <Route path='/store/dev' element={<Developer/>} />
+            <Route path='/store/details' element={<DetailedApp/>} />
+            <Route path='/library/favorite' element={<Favorite/>} />
 
             <Route path='/auth/login' element={<Login/>} />
             <Route path='/auth/register' element={<Register/>} />
             <Route path='/auth/forgotPassword' element={<ForgotPassword/>} />
             <Route path='/auth/resetPassword' element={<ResetPassword/>} />
-            <Route path='/categories' element={<Categories/>} />
           </Routes>
         </Router>
       </>
