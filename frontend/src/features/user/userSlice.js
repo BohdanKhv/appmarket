@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createDeveloper } from '../developer/developerSlice';
 import userService from './userService';
 
 
@@ -131,7 +132,7 @@ const userSlice = createSlice({
             state.isSuccess = false;
             state.isLoading = false;
             state.msg = '';
-        }
+        },
     },
     extraReducers: (builder) => {
         // Register user
@@ -223,6 +224,14 @@ const userSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.msg = action.payload;
+        });
+
+        // Become developer
+        builder.addCase(createDeveloper.fulfilled, (state, action) => {
+            state.user.type = 'developer';
+            const local = JSON.parse(localStorage.getItem('user'));
+            local.type = 'developer';
+            localStorage.setItem('user', JSON.stringify(local));
         });
     }
 });

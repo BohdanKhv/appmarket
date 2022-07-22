@@ -33,6 +33,7 @@
   --color-tertiary: #181818;
   --color-border: #4b4b4b;
   --color-primary: #4791e6;
+  --color-primary-light: #9ac8fd;
 
   --text-light: #030303;
   --text-dark: #ffffff;
@@ -46,6 +47,7 @@
   --color-tertiary: #fafafa;
   --color-border: #cccccc;
   --color-primary: #327cd1;
+  --color-primary-light: #9ac8fd;
 
   --text-light: #ffffff;
   --text-dark: #2E2E3B;
@@ -59,7 +61,6 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  overflow-x: hidden;
   /* background-color: var(--color-tertiary); */
   background-color: var(--color-main);
   color: var(--text-dark);
@@ -68,7 +69,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   width: 8px;
 }
 *::-webkit-scrollbar-track {
@@ -78,12 +79,12 @@ body {
   min-height: 65px;
   background-color: var(--color-border);
   border: 1px solid var(--color-border);
-}
+} */
 
 .content {
   /* padding: 0 16px 0 calc(var(--sidebar-width) + 16px); */
   padding: 0 16px;
-  margin-top: calc(var(--nav-height) + 16px);
+  margin-top: calc(var(--nav-height));
 }
 .content-body {
   padding: 16px 0;
@@ -138,7 +139,8 @@ table th {
 
 @media (max-width: 768px) {
   .content {
-    padding: 0 8px;
+    padding: var(--nav-height-sm) 8px calc(var(--nav-height) + 16px) 8px;
+    margin: 0;
   }
 
   .side-bar-width {

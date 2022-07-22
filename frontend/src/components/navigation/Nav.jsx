@@ -66,7 +66,7 @@ const Nav = () => {
           </span>
         </NavLink>
         <div className="nav-left-links">
-          {navMenu.map((item, index) => (
+          {navMenu.slice(0, windowWidth > 768 ? 5 : 4).map((item, index) => (
             <NavLink 
               to={item.path}
               className="nav-item" 

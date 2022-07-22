@@ -29,7 +29,7 @@ const UserMenu = ({openMenu, setOpenMenu}) => {
                 {user ?
                 <>
                     {navUser.map((item, index) => (
-                        <Link to={item.path} className="menu-item"><span className="menu-item-icon">{item.icon}</span><span>{item.label}</span></Link>
+                        <Link key={`user-menu-${index}`} to={item.path} className="menu-item"><span className="menu-item-icon">{item.icon}</span><span>{item.label}</span></Link>
                     ))}
                     <div onClick={() => {dispatch(logout());}} className="menu-item border-top"><span className="menu-item-icon">{logoutIcon}</span>Sign out</div>
                 </>

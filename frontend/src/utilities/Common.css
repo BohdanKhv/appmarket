@@ -117,6 +117,10 @@
 .bg-main {
     background-color: var(--color-main);
 }
+.bg-primary-gradient {
+    background: linear-gradient(0deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    /* background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-light)); */
+}
 
 .bg-hover {
     transition-duration: var(--transition-duration);

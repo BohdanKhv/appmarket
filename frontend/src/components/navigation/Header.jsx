@@ -7,7 +7,7 @@ const Header = ({label, secondary}) => {
                 {label}
             </h1>
             {secondary &&
-                <h5 className="fs-3 weight-normal pt-3">
+                <h5 className="header-secondary fs-3 weight-normal mt-3 filter-shadow">
                     Create free publisher page and start publishing your apps.
                 </h5>
             }

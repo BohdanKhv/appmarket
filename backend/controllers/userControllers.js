@@ -76,6 +76,7 @@ const registerUser = async (req, res) => {
             _id: newUser._id,
             email: newUser.email,
             fullName: newUser.fullName,
+            type: newUser.type,
             token: generateToken(newUser._id)
         });
 
@@ -118,6 +119,7 @@ const loginUser = async (req, res) => {
             email: user.email,
             fullName: user.fullName,
             avatar: user.avatar,
+            type: user.type,
             token: generateToken(user._id)
         });
     } catch (err) {

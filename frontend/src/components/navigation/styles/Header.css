@@ -1,5 +1,6 @@
 .header {
     padding: 40px 20px 40px 20px;
+    position: relative;
 }
 .header-title {
     color: var(--text-dark);
@@ -9,6 +10,12 @@
     width: fit-content;
     overflow: hidden;
 }
+.header-secondary {
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+}
+.header-secondary::before,
 .header-title::before {
     animation: 1.6s linear 0.5s forwards header-animation;
     background: linear-gradient(90deg, var(--color-tertiary), var(--color-tertiary), var(--color-tertiary));

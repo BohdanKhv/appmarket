@@ -9,13 +9,14 @@ import {
 
   Dashboard,
   DetailedApp,
+  Category,
 
   Favorite,
 
   Login,
   Register,
   ResetPassword,
-  ForgotPassword
+  ForgotPassword,
 } from './pages';
 
 
@@ -36,10 +37,14 @@ const App = () => {
           <Nav/>
           <Routes>
             <Route path='/' element={<Home/>} />
+
             <Route path='/user/developer' element={<Dashboard/>} />
             <Route path='/user/profile' element={<Profile/>} />
+
             <Route path='/store/dev' element={<Developer/>} />
             <Route path='/store/details' element={<DetailedApp/>} />
+            <Route path='/store/category' element={<Category/>} />
+
             <Route path='/library/favorite' element={<Favorite/>} />
 
             <Route path='/auth/login' element={<Login/>} />

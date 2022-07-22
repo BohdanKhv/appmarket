@@ -2,6 +2,7 @@ import Home from "./Home";
 import Developer from "./Developer";
 import Profile from "./Profile";
 
+import Category from "./Category";
 import Dashboard from "./Dashboard";
 import DetailedApp from "./DetailedApp";
 
@@ -17,6 +18,7 @@ export {
     Developer,
     Profile,
 
+    Category,
     Dashboard,
     DetailedApp,
 
