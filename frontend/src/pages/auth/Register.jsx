@@ -111,7 +111,7 @@ const Register = () => {
                     </div>
                     <Button 
                         type="submit"
-                        color={fullName.length > 0 && email.length > 0 && password.length > 0 ? 'primary' : 'secondary'}
+                        color={fullName.length > 0 && email.length > 0 && password.length > 0 ? 'primary' : 'disabled'}
                         className={`btn w-100 mt-3`}
                         disabled={!(fullName.length > 0 && email.length > 0 && password.length > 0) || isLoading}
                         loading={isLoading}

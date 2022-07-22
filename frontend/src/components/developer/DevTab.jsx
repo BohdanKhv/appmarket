@@ -22,11 +22,6 @@ const DevTab = () => {
                 </div>
             </div>
         </div>
-        <FsModal
-            title={'Create developer page'}
-            fsmOpen={isFsmOpen}
-            setIsFsmOpen={setIsFsmOpen}
-        />
         </>
     )
 }

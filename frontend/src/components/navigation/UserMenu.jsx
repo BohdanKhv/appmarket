@@ -28,7 +28,7 @@ const UserMenu = ({openMenu, setOpenMenu}) => {
                 {user ?
                 <>
                     <Link to="/profile" className="menu-item"><span className="menu-item-icon">{userIcon}</span><span>Profile</span></Link>
-                    <Link to="/dashboard" className="menu-item"><span className="menu-item-icon">{appIcon}</span><span>Dashboard</span></Link>
+                    <Link to="/developer" className="menu-item"><span className="menu-item-icon">{appIcon}</span><span>Developer</span></Link>
                     <Link to="/favorite" className="menu-item"><span className="menu-item-icon">{likeIcon}</span><span>Favorite</span></Link>
                     <Link to="/setting" className="menu-item"><span className="menu-item-icon">{settingsIcon}</span><span>Settings</span></Link>
                     <div onClick={() => {dispatch(logout());}} className="menu-item border-top"><span className="menu-item-icon">{logoutIcon}</span>Sign out</div>

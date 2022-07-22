@@ -84,7 +84,7 @@ const Login = () => {
                             />
                         </div>
                         <Button
-                            color={email.length > 0 && password.length > 0 ? 'primary' : 'secondary'}
+                            color={email.length > 0 && password.length > 0 ? 'primary' : 'disabled'}
                             className={`btn w-100 mt-3 mb-3`}
                             disabled={!(email.length > 0 && password.length > 0) || isLoading}
                             loading={isLoading}

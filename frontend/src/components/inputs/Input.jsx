@@ -18,12 +18,13 @@ const Input = ({
     onClick,
     onKeyDown,
     inputStyle,
-    size
+    size,
+    className,
 }) => {
     return (
         <div 
         onClick={onClick}
-        className={`input-container${error ? ' input-danger' : ''}${success ? ' input-success' : ''}${variant ? ` input-${variant}` : ''}${resize ? ' input-resize' : ''}${size ? ` input-${size}` : ''}`}>
+        className={`input-container${error ? ' input-danger' : ''}${success ? ' input-success' : ''}${variant ? ` input-${variant}` : ''}${resize ? ' input-resize' : ''}${size ? ` input-${size}` : ''}${className ? ` ${className}` : ""}`}>
             <input
                 onKeyDown={onKeyDown}
                 className={`${error ? 'input-danger' : ''}${success ? ' input-success' : ''}`}

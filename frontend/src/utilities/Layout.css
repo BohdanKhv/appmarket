@@ -236,3 +236,10 @@
 .overflow-y-hidden {
     overflow-y: hidden;
 }
+
+
+@media (max-width: 768px) {
+    .flex-sm-wrap {
+        flex-wrap: wrap;
+    }
+}

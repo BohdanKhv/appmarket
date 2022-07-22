@@ -4,6 +4,7 @@ import Input from "./inputs/Input";
 import Icon from "./inputs/Icon";
 import CustomSelect from "./inputs/CustomSelect";
 import Search from "./inputs/Search";
+import Textarea from "./inputs/Textarea";
 
 import Nav from "./navigation/Nav";
 import Header from "./navigation/Header";
@@ -21,7 +22,10 @@ import Avatar from "./common/Avatar";
 import Skeleton from "./feedback/Skeleton";
 
 import DevTab from "./developer/DevTab";
+import CreateDev from "./developer/CreateDev";
 import AppTab from "./developer/AppTab";
+
+import CreateApp from "./app/CreateApp";
 
 
 export {
@@ -31,6 +35,7 @@ export {
     Icon,
     CustomSelect,
     Search,
+    Textarea,
 
     Nav,
     Header,
@@ -48,5 +53,8 @@ export {
     Skeleton,
 
     DevTab,
-    AppTab
+    CreateDev,
+    AppTab,
+
+    CreateApp
 }

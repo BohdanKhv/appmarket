@@ -19,6 +19,25 @@ const Nav = () => {
     window.addEventListener('resize', () => {
         setWindowWidth(window.innerWidth);
     }, false);
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          if(windowWidth > 768) {
+            document.querySelector('.nav').classList.remove('border-bottom');
+            document.querySelector('.nav').classList.add('box-shadow');
+          } else {
+            document.querySelector('.nav-mobile').classList.remove('border-bottom');
+            document.querySelector('.nav-mobile').classList.add('box-shadow');
+          }
+        } else {
+          if(windowWidth > 768) {
+            document.querySelector('.nav').classList.add('border-bottom');
+            document.querySelector('.nav').classList.remove('box-shadow');
+          } else {
+            document.querySelector('.nav-mobile').classList.add('border-bottom');
+            document.querySelector('.nav-mobile').classList.remove('box-shadow');
+          }
+        }
+    }, false);
 
     return () => {
         window.removeEventListener('resize', () => {
@@ -38,10 +57,10 @@ const Nav = () => {
 
   return (
     <>
-    <nav className="nav">
+    <nav className="nav border-bottom">
       <div className="nav-left">
         <NavLink to="/" className="logo">
-          <span className="filter-shadow">
+          <span>
             {logoIcon}
           </span>
         </NavLink>
@@ -89,7 +108,7 @@ const Nav = () => {
       </div>
     </nav>
     {windowWidth <= 768 && 
-      <header className="nav-mobile">
+      <header className="nav-mobile border-bottom">
         <div className="logo">
           {logoIcon}
         </div>

@@ -88,7 +88,7 @@ const createApp = async (req, res) => {
             return res.status(404).json({ msg: 'You are not a developer, please register a developer page.' });
         }
 
-        const { domain, name, description, categories, tags, monetization, video, images } = req.body;
+        const { domain, name, description, categories, tags, monetization, video, images, github } = req.body;
 
         if(!domain || !name) {
             return res.status(400).json({ msg: 'Please fill in all required fields' });
@@ -134,6 +134,7 @@ const createApp = async (req, res) => {
                 categories: categories,
                 tags: tags,
                 meta: appMeta,
+                github: github,
                 verified: false
             });
 

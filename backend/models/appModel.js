@@ -82,6 +82,10 @@ const appSchema = new mongoose.Schema({
         type: Boolean,
         required: false
     },
+    github: {
+        type: String,
+        required: false
+    },
     rank: {
         type: Number,
         required: false,

@@ -213,7 +213,6 @@
 }
 .box:hover {
     box-shadow: var(--box-shadow);
-    background-color: var(--color-secondary);
 }
 .box:active {
     opacity: 0.8;
