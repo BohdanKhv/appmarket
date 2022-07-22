@@ -1,6 +1,6 @@
 import Select from 'react-select';
 
-const CustomSelect = ({ className, options, onChange, value, placeholder, isSearchable, isClearable, isLoading }) => {
+const CustomSelect = ({ className, options, onChange, value, placeholder, isSearchable, isMulti, isClearable, isLoading }) => {
   const customStyles = {
     option: (provided, state) => ({
         ...provided,
@@ -14,11 +14,11 @@ const CustomSelect = ({ className, options, onChange, value, placeholder, isSear
         },
     }),
     control: () => ({
-        border: '1px solid var(--color-border)',
-        background: 'var(--color-main)',
+        outline: '2px solid var(--color-secondary)',
+        background: 'var(--color-secondary)',
         fontWeight: '400',
         display: 'flex',
-        height: '35px',
+        height: '45px',
         borderRadius: 'var(--border-radius)',
         cursor: 'pointer',
         transition: 'var(--transition-duration)',
@@ -26,8 +26,7 @@ const CustomSelect = ({ className, options, onChange, value, placeholder, isSear
         minWidth: '110px',
         fontFamily: 'inherit',
         '&:hover': {
-          borderColor: 'transparent',
-          background: 'var(--color-secondary)',
+          outline: '2px solid var(--color-primary)',
           // boxShadow: 'var(--box-shadow)',
         },
     }),
@@ -61,6 +60,7 @@ const CustomSelect = ({ className, options, onChange, value, placeholder, isSear
       placeholder={placeholder}
       isSearchable={isSearchable}
       isClearable={isClearable}
+      isMulti={isMulti}
       isLoading={isLoading}
     />
   )

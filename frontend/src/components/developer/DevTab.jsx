@@ -12,15 +12,7 @@ const DevTab = () => {
     return (
         <>
         <div className="flex justify-center">
-            <div
-                onClick={() => setIsFsmOpen(true)}
-                className="box justify-center align-center bg-main flex-col"
-            >
-                <div className="icon icon-xl pb-2">{plusIcon}</div>
-                <div>
-                    Become a developer
-                </div>
-            </div>
+            
         </div>
         </>
     )

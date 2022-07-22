@@ -1,0 +1,629 @@
+[
+    {
+        "category": "Arts & Entertainment"
+    },
+    {
+        "category": "Arts & Entertainment, Animation and Comics"
+    },
+    {
+        "category": "Arts & Entertainment, Other Arts and Entertainment"
+    },
+    {
+        "category": "Arts & Entertainment, Books and Literature"
+    },
+    {
+        "category": "Arts & Entertainment, Humor"
+    },
+    {
+        "category": "Arts & Entertainment, Music"
+    },
+    {
+        "category": "Arts & Entertainment, Performing Arts"
+    },
+    {
+        "category": "Arts & Entertainment, Streaming & Online TV"
+    },
+    {
+        "category": "Arts & Entertainment, Visual Arts and Design"
+    },
+    {
+        "category": "Business and Consumer Services"
+    },
+    {
+        "category": "Business and Consumer Services, Other Business and Consumer Services"
+    },
+    {
+        "category": "Business and Consumer Services, Business Services"
+    },
+    {
+        "category": "Business and Consumer Services, Marketing and Advertising"
+    },
+    {
+        "category": "Business and Consumer Services, Digital Marketing"
+    },
+    {
+        "category": "Business and Consumer Services, Printing & Self Publishing"
+    },
+    {
+        "category": "Business and Consumer Services, Real Estate"
+    },
+    {
+        "category": "Business and Consumer Services, Moving & Relocation"
+    },
+    {
+        "category": "Business and Consumer Services, Shipping and Logistics"
+    },
+    {
+        "category": "Business and Consumer Services, Textiles"
+    },
+    {
+        "category": "Community and Society"
+    },
+    {
+        "category": "Community and Society, Other Community and Society"
+    },
+    {
+        "category": "Community and Society, Decease"
+    },
+    {
+        "category": "Community and Society, Faith and Beliefs"
+    },
+    {
+        "category": "Community and Society, Holidays and Seasonal Events"
+    },
+    {
+        "category": "Community and Society, LGBTQ"
+    },
+    {
+        "category": "Community and Society, Philanthropy"
+    },
+    {
+        "category": "Community and Society, Dating and Relationships"
+    },
+    {
+        "category": "Computers Electronics and Technology"
+    },
+    {
+        "category": "Computers Electronics and Technology, Advertising Networks"
+    },
+    {
+        "category": "Computers Electronics and Technology, Computer Hardware"
+    },
+    {
+        "category": "Computers Electronics and Technology, Computer Security"
+    },
+    {
+        "category": "Computers Electronics and Technology, Other Computers Electronics and Technology"
+    },
+    {
+        "category": "Computers Electronics and Technology, Consumer Electronics"
+    },
+    {
+        "category": "Computers Electronics and Technology, Email"
+    },
+    {
+        "category": "Computers Electronics and Technology, File Sharing and Hosting"
+    },
+    {
+        "category": "Computers Electronics and Technology, Graphics Multimedia and Web Design"
+    },
+    {
+        "category": "Computers Electronics and Technology, Programming and Developer Software"
+    },
+    {
+        "category": "Computers Electronics and Technology, Search Engines"
+    },
+    {
+        "category": "Computers Electronics and Technology, Social Media Networks"
+    },
+    {
+        "category": "Computers Electronics and Technology, Telecommunications"
+    },
+    {
+        "category": "Computers Electronics and Technology, Web Hosting and Domain Names"
+    },
+    {
+        "category": "eCommerce & Shopping"
+    },
+    {
+        "category": "eCommerce & Shopping, Auctions"
+    },
+    {
+        "category": "eCommerce & Shopping, Classifieds"
+    },
+    {
+        "category": "eCommerce & Shopping, Coupons and Rebates"
+    },
+    {
+        "category": "eCommerce & Shopping, Other eCommerce and Shopping"
+    },
+    {
+        "category": "eCommerce & Shopping, Marketplace"
+    },
+    {
+        "category": "eCommerce & Shopping, Price Comparison"
+    },
+    {
+        "category": "eCommerce & Shopping, Tickets"
+    },
+    {
+        "category": "Finance"
+    },
+    {
+        "category": "Finance, Accounting and Auditing"
+    },
+    {
+        "category": "Finance, Banking Credit and Lending"
+    },
+    {
+        "category": "Finance, Other Finance"
+    },
+    {
+        "category": "Finance, Financial Planning and Management"
+    },
+    {
+        "category": "Finance, Insurance"
+    },
+    {
+        "category": "Finance, Investing"
+    },
+    {
+        "category": "Food and Drink"
+    },
+    {
+        "category": "Food and Drink, Beverages"
+    },
+    {
+        "category": "Food and Drink, Cooking and Recipes"
+    },
+    {
+        "category": "Food and Drink, Other Food and Drink"
+    },
+    {
+        "category": "Food and Drink, Groceries"
+    },
+    {
+        "category": "Food and Drink, Restaurants and Delivery"
+    },
+    {
+        "category": "Food and Drink, Vegetarian and Vegan"
+    },
+    {
+        "category": "Gambling"
+    },
+    {
+        "category": "Gambling, Bingo"
+    },
+    {
+        "category": "Gambling, Casinos"
+    },
+    {
+        "category": "Gambling, Other Gambling"
+    },
+    {
+        "category": "Gambling, Lottery"
+    },
+    {
+        "category": "Gambling, Poker"
+    },
+    {
+        "category": "Gambling, Sports Betting"
+    },
+    {
+        "category": "Games"
+    },
+    {
+        "category": "Games, Board and Card Games"
+    },
+    {
+        "category": "Games, Other Games"
+    },
+    {
+        "category": "Games, Puzzles and Brainteasers"
+    },
+    {
+        "category": "Games, Roleplaying Games"
+    },
+    {
+        "category": "Games, Video Games Consoles and Accessories"
+    },
+    {
+        "category": "Health"
+    },
+    {
+        "category": "Health, Addictions"
+    },
+    {
+        "category": "Health, Alternative and Natural Medicine"
+    },
+    {
+        "category": "Health, Biotechnology and Pharmaceuticals"
+    },
+    {
+        "category": "Health, Childrens Health"
+    },
+    {
+        "category": "Health, Dentist and Dental Services"
+    },
+    {
+        "category": "Health, Developmental and Physical Disabilities"
+    },
+    {
+        "category": "Health, Geriatric and Aging Care"
+    },
+    {
+        "category": "Health, Other Health"
+    },
+    {
+        "category": "Health, Health Conditions and Concerns"
+    },
+    {
+        "category": "Health, Medicine"
+    },
+    {
+        "category": "Health, Mens Health"
+    },
+    {
+        "category": "Health, Mental Health"
+    },
+    {
+        "category": "Health, Nutrition Diets and Fitness"
+    },
+    {
+        "category": "Health, Pharmacy"
+    },
+    {
+        "category": "Health, Public Health and Safety"
+    },
+    {
+        "category": "Health, Womens Health"
+    },
+    {
+        "category": "Heavy Industry and Engineering"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Aerospace and Defense"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Agriculture"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Architecture"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Chemical Industry"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Construction and Maintenance"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Energy Industry"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Other Heavy Industry and Engineering"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Metals and Mining"
+    },
+    {
+        "category": "Heavy Industry and Engineering, Waste Water and Environmental"
+    },
+    {
+        "category": "Hobbies and Leisure"
+    },
+    {
+        "category": "Hobbies and Leisure, Ancestry and Genealogy"
+    },
+    {
+        "category": "Hobbies and Leisure, Antiques and Collectibles"
+    },
+    {
+        "category": "Hobbies and Leisure, Camping Scouting and Outdoors"
+    },
+    {
+        "category": "Hobbies and Leisure, Crafts"
+    },
+    {
+        "category": "Hobbies and Leisure, Other Hobbies and Leisure"
+    },
+    {
+        "category": "Hobbies and Leisure, Models"
+    },
+    {
+        "category": "Hobbies and Leisure, Photography"
+    },
+    {
+        "category": "Home and Garden"
+    },
+    {
+        "category": "Home and Garden, Furniture"
+    },
+    {
+        "category": "Home and Garden, Gardening"
+    },
+    {
+        "category": "Home and Garden, Other Home and Garden"
+    },
+    {
+        "category": "Home and Garden, Home Improvement and Maintenance"
+    },
+    {
+        "category": "Home and Garden, Interior Design"
+    },
+    {
+        "category": "Jobs and Career"
+    },
+    {
+        "category": "Jobs and Career, Human Resources"
+    },
+    {
+        "category": "Jobs and Career, Other Jobs and Career"
+    },
+    {
+        "category": "Jobs and Career, Jobs and Employment"
+    },
+    {
+        "category": "Law and Government"
+    },
+    {
+        "category": "Law and Government, Government"
+    },
+    {
+        "category": "Law and Government, Immigration and Visas"
+    },
+    {
+        "category": "Law and Government, Other Law and Government"
+    },
+    {
+        "category": "Law and Government, Law Enforcement and Protective Services"
+    },
+    {
+        "category": "Law and Government, Legal"
+    },
+    {
+        "category": "Law and Government, National Security"
+    },
+    {
+        "category": "Lifestyle"
+    },
+    {
+        "category": "Lifestyle, Beauty and Cosmetics"
+    },
+    {
+        "category": "Lifestyle, Childcare"
+    },
+    {
+        "category": "Lifestyle, Fashion and Apparel"
+    },
+    {
+        "category": "Lifestyle, Gifts and Flowers"
+    },
+    {
+        "category": "Lifestyle, Jewelry and Luxury Products"
+    },
+    {
+        "category": "Lifestyle, Other Lifestyle"
+    },
+    {
+        "category": "Lifestyle, Tobacco"
+    },
+    {
+        "category": "Lifestyle, Weddings"
+    },
+    {
+        "category": "News & Media Publishers"
+    },
+    {
+        "category": "Pets and Animals"
+    },
+    {
+        "category": "Pets and Animals, Animals"
+    },
+    {
+        "category": "Pets and Animals, Birds"
+    },
+    {
+        "category": "Pets and Animals, Fish and Aquaria"
+    },
+    {
+        "category": "Pets and Animals, Horses"
+    },
+    {
+        "category": "Pets and Animals, Pet Food and Supplies"
+    },
+    {
+        "category": "Pets and Animals, Pets"
+    },
+    {
+        "category": "Pets and Animals, Other Pets and Animals"
+    },
+    {
+        "category": "Reference Materials"
+    },
+    {
+        "category": "Reference Materials, Dictionaries and Encyclopedias"
+    },
+    {
+        "category": "Reference Materials, Maps"
+    },
+    {
+        "category": "Reference Materials, Public Records and Directories"
+    },
+    {
+        "category": "Reference Materials, Other Reference Materials"
+    },
+    {
+        "category": "Science and Education"
+    },
+    {
+        "category": "Science and Education, Astronomy"
+    },
+    {
+        "category": "Science and Education, Biology"
+    },
+    {
+        "category": "Science and Education, Business Training"
+    },
+    {
+        "category": "Science and Education, Chemistry"
+    },
+    {
+        "category": "Science and Education, Earth Sciences"
+    },
+    {
+        "category": "Science and Education, Education"
+    },
+    {
+        "category": "Science and Education, Environmental Science"
+    },
+    {
+        "category": "Science and Education, Grants Scholarships and Financial Aid"
+    },
+    {
+        "category": "Science and Education, History"
+    },
+    {
+        "category": "Science and Education, Libraries and Museums"
+    },
+    {
+        "category": "Science and Education, Literature"
+    },
+    {
+        "category": "Science and Education, Math"
+    },
+    {
+        "category": "Science and Education, Philosophy"
+    },
+    {
+        "category": "Science and Education, Physics"
+    },
+    {
+        "category": "Science and Education, Public Records and Directories"
+    },
+    {
+        "category": "Science and Education, Other Science and Education"
+    },
+    {
+        "category": "Science and Education, Social Sciences"
+    },
+    {
+        "category": "Science and Education, Universities and Colleges"
+    },
+    {
+        "category": "Science and Education, Weather"
+    },
+    {
+        "category": "Sports"
+    },
+    {
+        "category": "Sports, American Football"
+    },
+    {
+        "category": "Sports, Baseball"
+    },
+    {
+        "category": "Sports, Basketball"
+    },
+    {
+        "category": "Sports, Boxing"
+    },
+    {
+        "category": "Sports, Climbing"
+    },
+    {
+        "category": "Sports, Cycling and Biking"
+    },
+    {
+        "category": "Sports, Extreme Sports"
+    },
+    {
+        "category": "Sports, Fantasy Sports"
+    },
+    {
+        "category": "Sports, Fishing"
+    },
+    {
+        "category": "Sports, Golf"
+    },
+    {
+        "category": "Sports, Hunting and Shooting"
+    },
+    {
+        "category": "Sports, Martial Arts"
+    },
+    {
+        "category": "Sports, Rugby"
+    },
+    {
+        "category": "Sports, Running"
+    },
+    {
+        "category": "Sports, Soccer"
+    },
+    {
+        "category": "Sports, Other Sports"
+    },
+    {
+        "category": "Sports, Tennis"
+    },
+    {
+        "category": "Sports, Volleyball"
+    },
+    {
+        "category": "Sports, Water Sports"
+    },
+    {
+        "category": "Sports, Winter Sports"
+    },
+    {
+        "category": "Travel and Tourism"
+    },
+    {
+        "category": "Travel and Tourism, Accommodation and Hotels"
+    },
+    {
+        "category": "Travel and Tourism, Air Travel"
+    },
+    {
+        "category": "Travel and Tourism, Car Rentals"
+    },
+    {
+        "category": "Travel and Tourism, Ground Transportation"
+    },
+    {
+        "category": "Travel and Tourism, Tourist Attractions"
+    },
+    {
+        "category": "Travel and Tourism, Transportation and Excursions"
+    },
+    {
+        "category": "Travel and Tourism, Other Travel and Tourism"
+    },
+    {
+        "category": "Vehicles"
+    },
+    {
+        "category": "Vehicles, Automotive Industry"
+    },
+    {
+        "category": "Vehicles, Aviation"
+    },
+    {
+        "category": "Vehicles, Boats"
+    },
+    {
+        "category": "Vehicles, Makes and Models"
+    },
+    {
+        "category": "Vehicles, Motorcycles"
+    },
+    {
+        "category": "Vehicles, Motorsports"
+    },
+    {
+        "category": "Vehicles, Other Vehicles"
+    },
+    {
+        "category": "Adult"
+    }
+]
