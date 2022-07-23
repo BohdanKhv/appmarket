@@ -107,6 +107,11 @@ const Register = () => {
                             label="Password *"
                             value={password}
                             onChange={onChange}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    onSubmit();
+                                }
+                            }}
                         />
                     </div>
                     <Button 

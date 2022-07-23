@@ -1,10 +1,10 @@
-import { appIcon, appFillIcon, institutionIcon, institutionFillIcon, homeIcon, homeFillIcon, gameIcon, gameFillIcon, videoIcon, videoFillIcon, newsIcon, newsFillIcon, userIcon, developerIcon, likeIcon } from '../img/icons'
+import { appIcon, appFillIcon, developerFillIcon, homeIcon, homeFillIcon, gameIcon, gameFillIcon, videoIcon, videoFillIcon, newsIcon, newsFillIcon, userIcon, developerIcon, likeIcon } from '../img/icons'
 
 const dashboardTabs = [
     {
         label: "Developer",
-        icon: institutionIcon,
-        fillIcon: institutionFillIcon
+        icon: developerIcon,
+        fillIcon: developerFillIcon
     }, {
         label: "Apps",
         icon: appIcon,

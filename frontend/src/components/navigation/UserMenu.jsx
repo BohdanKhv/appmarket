@@ -48,7 +48,7 @@ const UserMenu = ({openMenu, setOpenMenu}) => {
             }
             </Menu>
         </div>
-        {user.type === "user" &&
+        {user && user.type === "user" &&
             <CreateDev isFsmOpen={isFsmOpen} setIsFsmOpen={setIsFsmOpen} />
         }
     </>
