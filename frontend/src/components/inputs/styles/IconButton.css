@@ -84,7 +84,11 @@
     opacity: 1;
 }
 
-
 .icon-btn.icon-btn-xl svg {
     font-size: 62px;
+}
+
+.icon-btn-disabled,
+.icon-btn-loading {
+    filter: grayscale(1);
 }

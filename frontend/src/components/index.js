@@ -23,9 +23,10 @@ import Skeleton from "./feedback/Skeleton";
 
 import DevTab from "./developer/DevTab";
 import CreateDev from "./developer/CreateDev";
-import AppTab from "./developer/AppTab";
 
+import AppTab from "./app/AppTab";
 import CreateApp from "./app/CreateApp";
+import UpdateMeta from "./app/UpdateMeta";
 
 
 export {
@@ -56,5 +57,6 @@ export {
     CreateDev,
     AppTab,
 
-    CreateApp
+    CreateApp,
+    UpdateMeta
 }

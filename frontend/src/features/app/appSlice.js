@@ -4,6 +4,7 @@ import appService from './appService';
 
 const initialState = {
     apps: [],
+    appLoading: null,
     isLoading: false,
     isUpdating: false,
     isError: false,
@@ -135,6 +136,26 @@ export const createApp = createAsyncThunk(
 
 
 // Create app
+export const updateAppMeta = createAsyncThunk(
+    'app/updateAppMeta',
+    async (domain, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().user.user.token;
+            return await appService.updateAppMeta(domain, token);
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.msg) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+
+// Create app
 export const updateApp = createAsyncThunk(
     'app/updateApp',
     async (data, thunkAPI) => {
@@ -162,6 +183,7 @@ const appSlice = createSlice({
         // Reset apps state
         resetApp: (state) => {
             state.apps = [];
+            state.appLoading = null;
             state.isError = false;
             state.isSuccess = false;
             state.isLoading = false;
@@ -268,19 +290,39 @@ const appSlice = createSlice({
             state.msg = action.payload;
         });
 
+        // Update app's meta
+        builder.addCase(updateAppMeta.pending, (state, action) => {
+            state.isSuccess = false;
+            state.appLoading = state.apps.find(app => app.domain === action.meta.arg).domain;
+            state.isError = false;
+            state.msg = '';
+        });
+        builder.addCase(updateAppMeta.fulfilled, (state, action) => {
+            state.appLoading = null;
+            const index = state.apps.findIndex(app => app._id === action.payload._id);
+            state.apps[index] = action.payload;
+        });
+        builder.addCase(updateAppMeta.rejected, (state, action) => {
+            state.appLoading = null;
+            state.isLoading = false;
+            state.isError = true;
+            state.msg = action.payload;
+        });
+
         // Update app
         builder.addCase(updateApp.pending, (state, action) => {
-            state.isLoading = true;
+            state.appLoading = state.apps.find(app => app.domain === action.meta.arg).domain;
             state.isSuccess = false;
             state.isError = false;
             state.msg = '';
         });
         builder.addCase(updateApp.fulfilled, (state, action) => {
-            state.isLoading = false;
+            state.appLoading = null;
             const index = state.apps.findIndex(app => app._id === action.payload._id);
             state.apps[index] = action.payload;
         });
         builder.addCase(updateApp.rejected, (state, action) => {
+            state.appLoading = null;
             state.isLoading = false;
             state.isError = true;
             state.msg = action.payload;

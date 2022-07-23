@@ -8,11 +8,12 @@ const {
     getAppsByCategory,
     getAppsBySearch,
     createApp,
+    updateAppMeta,
     updateApp
 } = require('../controllers/appControllers');
 
-
 router.route('/developer/me').get(protect, getMe);
+router.route('/meta/:domain').get(protect, updateAppMeta);
 router.route('/app/:domain').get(getApp);
 router.route('/developer/:id').get(getDeveloperApps);
 router.route('/category/:category').get(getAppsByCategory);

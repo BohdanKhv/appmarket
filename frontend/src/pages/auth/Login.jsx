@@ -55,7 +55,7 @@ const Login = () => {
 
 
     return (
-        <main className="content pt-5">
+        <main className="content mt-5">
             <div className="mx-w-sm mx-auto bg-main box-shadow border-radius px-3 py-5">
                 <div>
                     <h3 className="fs-2 weight-normal text-center pb-5">
@@ -71,7 +71,7 @@ const Login = () => {
                                 label="Email"
                                 value={email}
                                 onChange={onChange}
-                                autoCompleteOn={true}
+                                autoComplete={true}
                             />
                         </div>
                         <div className="py-2">
@@ -81,6 +81,7 @@ const Login = () => {
                                 label="Password"
                                 value={password}
                                 onChange={onChange}
+                                autoComplete={true}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter') {
                                         onSubmit();

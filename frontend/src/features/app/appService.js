@@ -17,7 +17,6 @@ const getMe = async (token) => {
     return response.data;
 }
 
-
 // get app by domain name
 const getApp = async (domain) => {
     const response = await axios.get(`${API_URL}/${domain}`);
@@ -55,6 +54,19 @@ const createApp = async (data, token) => {
     return response.data;
 }
 
+// update app's meta
+const updateAppMeta = async (domain, token) => {
+    const conf = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.get(`${API_URL}/meta/${domain}`, conf);
+    return response.data;
+}
+
 
 // update app
 const updateApp = async (data, token) => {
@@ -77,6 +89,7 @@ const profileService = {
     getAppsByCategory,
     getAppsBySearch,
     createApp,
+    updateAppMeta,
     updateApp
 }
 

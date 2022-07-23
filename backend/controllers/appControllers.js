@@ -212,7 +212,7 @@ const createApp = async (req, res) => {
 }
 
 
-// PUT /apps/app/meta/:domain
+// GET /apps/app/meta/:domain
 // Updates the app meta
 // Private
 const updateAppMeta = async (req, res) => {
@@ -222,8 +222,8 @@ const updateAppMeta = async (req, res) => {
         if(!app) {
             return res.status(404).json({ msg: 'App not found' });
         }
-        
-        const getMeta = await getAppMeta(req.params.domain);
+
+        const getMeta = await getAppMeta(app.domain);
 
         if(getMeta.msg === "Success") {
             app.meta = getMeta.meta;

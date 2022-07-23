@@ -1,6 +1,6 @@
 import './styles/Skeleton.css'
 
-const Skeleton = ({width, height, type, animation, className}) => {
+const Skeleton = ({width, index, height, type, animation, className}) => {
     return (
         <div 
             className={`skeleton${type ? ` skeleton-${type}` : ''}${animation ? ` skeleton-animation-${animation}` : ''}${className ? ` ${className}` : ''}`}
@@ -9,6 +9,7 @@ const Skeleton = ({width, height, type, animation, className}) => {
                 height: height ? `${height}px` : undefined,
                 minWidth: type === 'circular' ? `${width}px` : undefined,
                 minHeight: type === 'circular' ? `${height}px` : undefined,
+                "--order": index,
             }}
         />
     )
