@@ -17,7 +17,7 @@ const Dashboard = () => {
   }, [user, navigate])
 
   return (
-    <div className="content">
+    <div className="content mx-w-lg mx-auto">
         {user?.type === 'developer' ? (
           <>
             <Header label={'Dashboard'} />

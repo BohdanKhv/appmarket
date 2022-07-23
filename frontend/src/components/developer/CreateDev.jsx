@@ -13,7 +13,9 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
     const [email, setEmail] = useState('')
     const [website, setWebsite] = useState('')
     const [bio, setBio] = useState('')
+
     const [errMsg, setErrMsg] = useState('')
+
     const { isLoading, isError, msg } = useSelector(state => state.developer)
 
 
@@ -35,56 +37,56 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
             fsmOpen={isFsmOpen}
             setIsFsmOpen={setIsFsmOpen}
         >
-            <div className="flex flex-col justify-between h-100">
+            <div className="flex flex-col justify-between h-100 mx-w-md mx-auto">
                 <div className="flex-grow-1">
                     <div className="fs-1 py-5 px-3">
                         Step <span className="text-primary">{step}</span> of 3
                     </div> 
                     {step === 1 && (
                         <>
-                            <div className="fs-3 pb-3 px-3">
-                                Developer's name
+                            <div className="fs-3 px-3">
+                                Let's start with the basic developer information
                             </div>
                             <Input
-                                label="Name *"
+                                label="Name"
                                 value={name}
                                 type="text"
+                                required
                                 placeholder="Name"
+                                className="pt-5"
                                 onChange={(e) => setName(e.target.value)}
                             />
-                            <div className="fs-3 pt-5 pb-3 px-3">
-                                Developer's email
-                            </div>
-                            <Input
-                                label="Email *"
-                                value={email}
-                                type="email"
-                                placeholder="Email"
-                                onChange={(e) => setEmail(e.target.value)}
+                            <Textarea
+                                label="Bio"
+                                value={bio}
+                                placeholder="Bio"
+                                className="pt-5"
+                                maxLength={500}
+                                onChange={(e) => setBio(e.target.value)}
                             />
                         </>
                     )}
                     {step === 2 && (
                         <>
-                            <div className="fs-3 pb-3 px-3">
-                                Developer's website
+                            <div className="fs-3 px-3">
+                                Add contact information
                             </div>
+                            <Input
+                                label="Email"
+                                value={email}
+                                required
+                                type="email"
+                                placeholder="Email"
+                                className="pt-5"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                             <Input
                                 label="Website"
                                 value={website}
                                 type="text"
                                 placeholder="Website"
+                                className="pt-5"
                                 onChange={(e) => setWebsite(e.target.value)}
-                            />
-                            <div className="fs-3 pt-5 pb-3 px-3">
-                                Developer's bio
-                            </div>
-                            <Textarea
-                                label="Bio"
-                                value={bio}
-                                placeholder="Bio"
-                                maxLength={500}
-                                onChange={(e) => setBio(e.target.value)}
                             />
                         </>
                     )}
@@ -102,6 +104,7 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
                             }
                         }}
                         variant="outline"
+                        size="lg"
                         color="secondary"
                     >
                         {(step === 1) ? 'Cancel' : 'Back'}
@@ -113,6 +116,7 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
                             step === 1 ? setStep(step + 1) : onSubmit()
                         }}
                         loading={isLoading}
+                        size="lg"
                         disabled={name.length === 0 || email.length === 0 || isLoading}
                     >
                         {(step === 3) ? 'Create' : 'Next'}

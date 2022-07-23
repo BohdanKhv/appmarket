@@ -168,3 +168,9 @@
 .input-container.input-sm .filled {
     opacity: 0;
 }
+
+.input-required {
+    color: var(--color-danger);
+    fill: var(--color-danger);
+    margin-left: 4px;
+}

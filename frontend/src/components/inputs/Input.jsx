@@ -20,6 +20,7 @@ const Input = ({
     inputStyle,
     size,
     className,
+    required
 }) => {
     return (
         <div 
@@ -41,7 +42,7 @@ const Input = ({
                 className={value && 'filled'} 
                 htmlFor={name}
             >
-                {icon && <span className="input-icon">{icon}</span>}{label}
+                {icon && <span className="input-icon">{icon}</span>}{label}{required && <span className="input-required">*</span>}
             </label>
         </div>
     )

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './styles/Textarea.css';
 
-const Textarea = ({children, icon, type, name, label, value, onChange, bodyStyle, inputStyle, labelStyle, minLength, maxLength, cols, rows, isDisabled}) => {
+const Textarea = ({children, icon, type, name, label, value, onChange, bodyStyle, inputStyle, labelStyle, minLength, maxLength, cols, rows, isDisabled, className}) => {
     const [isFocused, setIsFocused] = useState(false);
     const textareaRef = useRef(null);
 
@@ -27,7 +27,7 @@ const Textarea = ({children, icon, type, name, label, value, onChange, bodyStyle
 
     return (
         <div
-            className={`textarea${isFocused ? ' focused' : ''}`}
+            className={`textarea${isFocused ? ' focused' : ''}${className ? ` ${className}` : ''}`}
             onClick={() => {
                 setIsFocused(true);
                 textareaRef.current.focus();

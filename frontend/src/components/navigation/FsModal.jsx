@@ -32,7 +32,7 @@ const FsModal = ({children, title, fsmOpen, setIsFsmOpen, logo}) => {
         >
             <div className="fsm">
                 <div className="fsm-header">
-                    <div className="flex justify-between align-center">
+                    <div className="flex justify-between align-center mx-w-md mx-auto">
                         <h3 className="title-3">
                             {title}
                         </h3>
