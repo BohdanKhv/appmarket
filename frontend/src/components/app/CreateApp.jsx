@@ -36,92 +36,93 @@ const CreateApp = () => {
                 fsmOpen={isFsmOpen}
                 setIsFsmOpen={setIsFsmOpen}
             >
-                <div className="fs-1 p-5">
-                    Step <span className="text-primary">{step}</span> of 3
-                </div>
-                <div className="p-5">
-                    {step === 1 && (
-                        <>
-                            <div className="fs-3 pb-3 px-3">
-                                App's name
-                            </div>
-                            <Input
-                                label="Name"
-                                value={name}
-                                placeholder="Name"
-                                onChange={e => setName(e.target.value)}
-                            />
-                            <div className="fs-3 pt-5 pb-3 px-3">
-                                App's domain
-                            </div>
-                            <Input
-                                label="Domain"
-                                value={domain}
-                                placeholder="Domain"
-                                onChange={e => setDomain(e.target.value)}
-                            />
-                            <div className="flex gap-3 pt-5 justify-end">
-                                <Button
-                                    onClick={() => {setStep(1); setIsFsmOpen(false)}}
-                                    variant="outline"
-                                    color="secondary"
-                                >
-                                    Cancel
-                                </Button>
-                                <Button
-                                    onClick={() => setStep(2)}
-                                    className="bg-primary"
-                                >
-                                    Next
-                                </Button>
-                            </div>
-                        </>
-                    )}
-                    {step === 2 && (
-                        <>
-                            <div className="fs-3 pb-3 px-3">
-                                App's description
-                            </div>
-                            <Textarea
-                                label="Description"
-                                value={description}
-                                placeholder="Description"
-                                onChange={e => setDescription(e.target.value)}
-                            />
-                            <div className="fs-3 pt-5 pb-3 px-3">
-                                App's category
-                            </div>
-                            <CustomSelect
-                                label="Category"
-                                value={category}
-                                placeholder="Category"
-                                isSearchable={true}
-                                isClearable={true}
-                                options={
-                                    categorySelect.map(cat => ({
-                                        value: cat.category,
-                                        label: cat.category
-                                    }))
-                                }
-                                onChange={e => setCategory(e)}
-                            />
-                            <div className="flex gap-3 pt-5 justify-end">
-                                <Button
-                                    onClick={() => setStep(1)}
-                                    variant="outline"
-                                    color="secondary"
-                                >
-                                    Previous
-                                </Button>
-                                <Button
-                                    onClick={() => setStep(2)}
-                                    className="bg-primary"
-                                >
-                                    Next
-                                </Button>
-                            </div>
-                        </>
-                    )}
+            <div className="flex flex-col justify-between h-100">
+                <div className="flex-grow-1">
+                    <div className="fs-1 py-5 px-3">
+                        Step <span className="text-primary">{step}</span> of 3
+                    </div>
+                    <div className="p-5">
+                        {step === 1 && (
+                            <>
+                                <div className="fs-3 pb-3 px-3">
+                                    App's name
+                                </div>
+                                <Input
+                                    label="Name"
+                                    value={name}
+                                    placeholder="Name"
+                                    onChange={e => setName(e.target.value)}
+                                />
+                                <div className="fs-3 pt-5 pb-3 px-3">
+                                    App's domain
+                                </div>
+                                <Input
+                                    label="Domain"
+                                    value={domain}
+                                    placeholder="Domain"
+                                    onChange={e => setDomain(e.target.value)}
+                                />
+                            </>
+                        )}
+                        {step === 2 && (
+                            <>
+                                <div className="fs-3 pb-3 px-3">
+                                    App's description
+                                </div>
+                                <Textarea
+                                    label="Description"
+                                    value={description}
+                                    placeholder="Description"
+                                    onChange={e => setDescription(e.target.value)}
+                                />
+                                <div className="fs-3 pt-5 pb-3 px-3">
+                                    App's category
+                                </div>
+                                <CustomSelect
+                                    label="Category"
+                                    value={category}
+                                    placeholder="Category"
+                                    isSearchable={true}
+                                    isClearable={true}
+                                    options={
+                                        categorySelect.map(cat => ({
+                                            value: cat.category,
+                                            label: cat.category
+                                        }))
+                                    }
+                                    onChange={e => setCategory(e)}
+                                />
+                            </>
+                        )}
+                        </div>
+                        <div className="p-3 flex justify-end gap-3">
+                            <Button
+                                onClick={() => {
+                                    if (step === 1) {
+                                        setStep(1)
+                                        setIsFsmOpen(false)
+                                    } else {
+                                        setStep(step - 1)
+                                    }
+                                }}
+                                variant="outline"
+                                color="secondary"
+                            >
+                                {(step === 1) ? 'Cancel' : 'Back'}
+                            </Button>
+                            <Button
+                                icon={plusIcon}
+                                color={name.length > 0 && domain.length > 0 ? 'primary' : 'disabled'}
+                                // onClick={() => {
+                                //     step === 1 ? setStep(step + 1) : onSubmit()
+                                // }}
+                                // loading={isLoading}
+                                // disabled={name.length === 0 || email.length === 0 || isLoading}
+                            >
+                                {(step === 3) ? 'Create' : 'Next'}
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             </FsModal>
         </>

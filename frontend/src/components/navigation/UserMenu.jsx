@@ -1,17 +1,20 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from '../../features/local/localSlice';
 import { logout } from '../../features/user/userSlice';
 import { Link } from 'react-router-dom';
-import { Menu, Avatar, IconButton } from '../';
-import { loginIcon, logoutIcon, registerIcon, sunIcon, moonIcon, userIcon } from '../../assets/img/icons';
+import { Menu, Avatar, IconButton, CreateDev } from '../';
+import { loginIcon, logoutIcon, registerIcon, sunIcon, moonIcon, userIcon, developerIcon } from '../../assets/img/icons';
 import { navUser } from '../../assets/data/tabs';
 
 const UserMenu = ({openMenu, setOpenMenu}) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user);
     const { theme } = useSelector((state) => state.local);
+    const [isFsmOpen, setIsFsmOpen] = useState(false)
 
     return (
+    <>
         <div className="pos-relative">
             {user ? (
                 <Avatar
@@ -29,7 +32,11 @@ const UserMenu = ({openMenu, setOpenMenu}) => {
                 {user ?
                 <>
                     {navUser.map((item, index) => (
-                        <Link key={`user-menu-${index}`} to={item.path} className="menu-item"><span className="menu-item-icon">{item.icon}</span><span>{item.label}</span></Link>
+                        item.path === "/user/developer" && user.type === "user" ? (
+                            <div key={index} className="menu-item" onClick={() => setIsFsmOpen(true)}><span className="menu-item-icon">{developerIcon}</span><span>Become a developer</span></div>
+                        ) : (
+                            <Link key={`user-menu-${index}`} to={item.path} className="menu-item"><span className="menu-item-icon">{item.icon}</span><span>{item.label}</span></Link>
+                        ) 
                     ))}
                     <div onClick={() => {dispatch(logout());}} className="menu-item border-top"><span className="menu-item-icon">{logoutIcon}</span>Sign out</div>
                 </>
@@ -41,6 +48,10 @@ const UserMenu = ({openMenu, setOpenMenu}) => {
             }
             </Menu>
         </div>
+        {user.type === "user" &&
+            <CreateDev isFsmOpen={isFsmOpen} setIsFsmOpen={setIsFsmOpen} />
+        }
+    </>
     )
 }
 
