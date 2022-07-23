@@ -3,7 +3,7 @@ import { closeIcon } from '../../assets/img/icons';
 import IconButton from '../inputs/IconButton';
 import './styles/FsModal.css';
 
-const FsModal = ({children, title, fsmOpen, setIsFsmOpen, logo}) => {
+const FsModal = ({children, title, fsmOpen, setIsFsmOpen, logo, scroll}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const onClickOutside = (e) => {
@@ -43,7 +43,7 @@ const FsModal = ({children, title, fsmOpen, setIsFsmOpen, logo}) => {
                         />
                     </div>
                 </div>
-                <div className="fsm-body">
+                <div className={`fsm-body${scroll ? ' sfm-body-scroll' : ''}`}>
                     {children}
                 </div>
             </div>

@@ -28,9 +28,20 @@ const AppTab = () => {
                 <Link
                     to={`/store/details?id=${app._id}`}
                     key={index} 
-                    className="box justify-center align-center flex-col"
+                    className="box flex-col justify-between"
+                    style={{
+                        backgroundImage: `url(${app?.ogMeta?.image})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                    }}
                 >
-                        {app.name}
+                    <div className="fs-4 p-3 text-uppercase bold text-black">
+                        {app.ogMeta.title ? app.ogMeta.title : app.meta.title ? app.meta.title : app.domain}
+                    </div>
+                    <div className="fs-4 p-3 text-end text-black">
+                        {app.domain}
+                    </div>
                 </Link>
             ))}
         </div>

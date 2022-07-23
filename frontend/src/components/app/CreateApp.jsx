@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
-import { Header, FsModal, Button, Input, Textarea, CustomSelect } from '../../components';
+import { FsModal, Button, Input, IconButton, CustomSelect } from '../../components';
 import { createApp } from '../../features/app/appSlice';
-import { plusIcon } from '../../assets/img/icons';
+import { plusIcon, infoIcon } from '../../assets/img/icons';
 import categorySelect from '../../assets/data/categorySelect.json';
 
 
@@ -12,51 +12,37 @@ const CreateApp = () => {
     const { user } = useSelector(state => state.user)
     const { isLoading, isError, msg, isSuccess } = useSelector(state => state.app)
 
+    const [openInfo, setOpenInfo] = useState(false)
     const [isFsmOpen, setIsFsmOpen] = useState(false)
     const [step, setStep] = useState(1)
     const [errMsg, setErrMsg] = useState('')
 
-    const [name, setName] = useState('')
+    const [github, setGithub] = useState('')
     const [domain, setDomain] = useState('')
-    const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
-    const [images, setImages] = useState([])
-    const [video, setVideo] = useState('')
-    const [thumbnail, setThumbnail] = useState('')
-    const [tags, setTags] = useState([])
 
     const [confetti, setConfetti] = useState(false)
 
     const onSubmit = () => {
         setErrMsg('')
-        if(name && domain) {
+        if(domain) {
             const data = {
-                name,
                 domain,
-                description,
+                github,
                 categories: category.value.includes(', ') ? category.value.split(', ') : [category.value],
-                images,
-                video,
-                thumbnail,
-                tags
             }
             dispatch(createApp(data));
         } else {
-            setErrMsg("Please enter all required fields")
+            setErrMsg("Please enter a domain")
         }
     }
 
     useEffect(() => {
         if(isSuccess) {
             // reset form
-            setName('')
             setDomain('')
-            setDescription('')
             setCategory('')
-            setImages([])
-            setVideo('')
-            setThumbnail('')
-            setTags([])
+            setGithub('')
             setStep(1)
 
             setIsFsmOpen(false)
@@ -80,9 +66,9 @@ const CreateApp = () => {
             )}
             <div
                 onClick={() => setIsFsmOpen(true)}
-                className="box justify-center align-center bg-primary text-light flex-col"
+                className="box justify-center align-center bg-secondary flex-col"
             >
-                <div className="icon icon-xl pb-2 fill-light">{plusIcon}</div>
+                <div className="icon icon-xl pb-2">{plusIcon}</div>
                 <div className="fs-2">
                     Create a new app
                 </div>
@@ -95,27 +81,27 @@ const CreateApp = () => {
             <div className="flex flex-col justify-between h-100 mx-w-md mx-auto">
                 <div className="flex-grow-1">
                     <div className="fs-1 py-5 px-3">
-                        Step <span className="text-primary">{step}</span> of 3
+                        Step <span className="text-primary">{step}</span> of 2
                     </div>
                         {step === 1 && (
                             <>
-                                <div className="fs-3 px-3">
-                                    Let's start with the basic information of your app
+                                <div className="flex px-3 pt-5 align-center">
+                                    <div className="fs-3">
+                                        We only need a domain to create your app.
+                                    </div>
+                                    <IconButton
+                                        icon={infoIcon}
+                                        className="ms-2"
+                                        color="secondary"
+                                        onClick={() => setOpenInfo(true)}
+                                    />
                                 </div>
-                                <Input
-                                    label="Name"
-                                    required
-                                    value={name}
-                                    placeholder="Name"
-                                    className="pt-5"
-                                    onChange={e => setName(e.target.value)}
-                                />
                                 <Input
                                     label="Domain"
                                     required
                                     value={domain}
                                     placeholder="Domain"
-                                    className="pt-5"
+                                    className="pt-3"
                                     onKeyDown={(e) => {
                                         if(e.key === 'Enter') {
                                             setStep(2)
@@ -128,23 +114,16 @@ const CreateApp = () => {
                         )}
                         {step === 2 && (
                             <>
-                                <div className="fs-3 px-3">
-                                    Describe your app in a few words to help others find it
+                                <div className="fs-3 px-3 pt-5">
+                                    Select a category, so users can find your app.
                                 </div>
-                                <Textarea
-                                    label="Description"
-                                    value={description}
-                                    placeholder="Description"
-                                    className="mt-5"
-                                    onChange={e => setDescription(e.target.value)}
-                                />
                                 <CustomSelect
                                     label="Category"
                                     value={category}
                                     placeholder="Category"
                                     isSearchable={true}
                                     isClearable={true}
-                                    className="pt-5"
+                                    className="pt-3"
                                     options={
                                         categorySelect.map(cat => ({
                                             value: cat.category,
@@ -153,25 +132,21 @@ const CreateApp = () => {
                                     }
                                     onChange={e => setCategory(e)}
                                 />
-                            </>
-                        )}
-                        {step === 3 && (
-                            <>
-                                <div className="fs-3 px-3">
-                                    Add images & video to your app
+                                <div className="fs-3 px-3 pt-5">
+                                    If you have a github repository, you can enter it here.
                                 </div>
                                 <Input
-                                    label="YouTube Video URL"
-                                    value={video}
-                                    placeholder="YouTube Video URL"
-                                    className="pt-5"
-                                    onChange={e => setVideo(e.target.value)}
+                                    label="Github"
+                                    value={github}
+                                    placeholder="Github"
+                                    className="pt-3"
                                     onKeyDown={(e) => {
                                         if(e.key === 'Enter') {
                                                 onSubmit()
                                             }
                                         }
                                     }
+                                    onChange={e => setGithub(e.target.value)}
                                 />
                             </>
                         )}
@@ -196,19 +171,53 @@ const CreateApp = () => {
                         </Button>
                         <Button
                             icon={plusIcon}
-                            color={name.length > 0 && domain.length > 0 ? 'primary' : 'disabled'}
+                            color={domain.length > 0 ? 'primary' : 'disabled'}
                             onClick={() => {
-                                step === 3 ? onSubmit() : setStep(step + 1)
+                                step === 2 ? onSubmit() : setStep(step + 1)
                             }}
                             loading={isLoading}
                             size="lg"
-                            disabled={name.length === 0 || domain.length === 0 || isLoading}
+                            disabled={domain.length === 0 || isLoading}
                         >
-                            {(step === 3) ? 'Create' : 'Next'}
+                            {(step === 2) ? 'Create' : 'Next'}
                         </Button>
                     </div>
                 </div>
             </FsModal>
+            {openInfo && (
+                <FsModal
+                    title={'We crawl the domain to get the information'}
+                    fsmOpen={openInfo}
+                    setIsFsmOpen={setOpenInfo}
+                    scroll
+                >
+                    <div className="flex flex-col justify-between h-100 mx-w-md mx-auto">
+                        <div>
+                            <div className="fs-3">
+                                Make sure you have following meta tags in your html:
+                            </div>
+                            <div className="fs-3 mt-3 px-4">
+                                <span className="bold">General</span>
+                                <ul className="mt-2">
+                                    <li>title</li><li>description</li><li>image</li><li>keywords</li><li>classification</li><li>subject</li><li>category</li><li>coverage</li><li>rating</li><li>apple-touch-icon</li>
+                                </ul>
+                            </div>
+                            <div className="fs-3 mt-3 px-4">
+                                <span className="bold">Open Graph</span>
+                                <ul className="mt-2">
+                                    <li>og:title</li><li>og:description</li><li>og:image</li><li>og:keywords</li><li>og:classification</li><li>og:subject</li><li>og:category</li><li>og:coverage</li><li>og:rating</li>
+                                </ul>
+                            </div>
+                            <div className="fs-3 mt-3 px-4">
+                                <span className="bold">Twitter</span>
+                                <ul className="mt-2 pb-5">
+                                    <li>twitter:title</li><li>twitter:description</li><li>twitter:image</li><li>twitter:keywords</li><li>twitter:classification</li><li>twitter:subject</li><li>twitter:category</li><li>twitter:coverage</li><li>twitter:rating</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </FsModal>
+            )}
         </>
     )
 }

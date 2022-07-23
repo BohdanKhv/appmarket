@@ -42,6 +42,10 @@
     width: 100%;
 }
 
+.sfm-body-scroll {
+    overflow-y: scroll;
+}
+
 @keyframes openFsm {
     0% {
         transform: translateX(100%);

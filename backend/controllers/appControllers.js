@@ -5,6 +5,79 @@ const axios = require('axios');
 
 
 
+const getAppMeta = async (domain) => {
+    try {
+        const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
+        const domainMatch = domainRegex.exec(domain);
+        const domainNew = domainMatch[1];
+
+        const appInfo = await axios.get("https://" + domainNew);
+        const $ = cheerio.load(appInfo.data);
+
+        const meta = {
+            title: $('title').text(),
+            description: $('meta[name="description"]')?.attr('content'),
+            keywords: $('meta[name="keywords"]')?.attr('content'),
+            classification: $('meta[name="classification"]')?.attr('content'),
+            subject: $('meta[name="subject"]')?.attr('content'),
+            copyright: $('meta[name="copyright"]')?.attr('content'),
+            author: $('meta[name="author"]')?.attr('content'),
+            reply: $('meta[name="reply-to"]')?.attr('content'),
+            publisher: $('meta[name="publisher"]')?.attr('content'),
+            language: $('meta[name="language"]')?.attr('content'),
+            category: $('meta[name="category"]')?.attr('content'),
+            coverage: $('meta[name="coverage"]')?.attr('content'),
+            rating: $('meta[name="rating"]')?.attr('content'),
+            icon: $('link[rel="icon"]')?.attr('href'),
+            iconApple: $('link[rel="apple-touch-icon"]')?.attr('href'),
+        }
+
+        const ogMeta = {
+            title: $('meta[property="og:title"]')?.attr('content'),
+            name: $('meta[property="og:site_name"]')?.attr('content'),
+            description: $('meta[property="og:description"]')?.attr('content'),
+            type: $('meta[property="og:type"]')?.attr('content'),
+            image: $('meta[property="og:image"]')?.attr('content'),
+            url: $('meta[property="og:url"]')?.attr('content'),
+        }
+
+        const twitterMeta = {
+            twitter: $('meta[property="twitter:site"]')?.attr('content'),
+            title: $('meta[property="twitter:title"]')?.attr('content'),
+            description: $('meta[property="twitter:description"]')?.attr('content'),
+            image: $('meta[property="twitter:image"]')?.attr('content'),
+            url: $('meta[property="twitter:url"]')?.attr('content'),
+            googlePlayId: $('meta[property="twitter:app:id:googleplay"]')?.attr('content'),
+            appStoreId: $('meta[property="twitter:app:id:iphone"]')?.attr('content'),
+        }
+
+        const tags = meta?.keywords?.split(', ');
+
+        return { meta, ogMeta, twitterMeta, tags, msg: "Success" };
+    } catch (err) {
+        // console.log(err);
+        return {msg: "Error getting app info"};
+    }
+}
+
+
+// GET /apps/developer/me
+// Returns all apps created by the logged in user
+// Public
+const getMe = async (req, res) => {
+    try {
+        const apps = await App.find({ user: req.user._id });
+        if (apps) {
+            return res.status(200).json(apps);
+        } else {
+            return res.status(404).json({ msg: 'Apps not found' });
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ msg: "Server error" });
+    }
+}
+
 // GET /apps/app/:domain
 // Returns the app with the given domain
 // Public
@@ -88,9 +161,9 @@ const createApp = async (req, res) => {
             return res.status(404).json({ msg: 'You are not a developer, please register a developer page.' });
         }
 
-        const { domain, name, description, categories, tags, monetization, video, images, github } = req.body;
+        const { domain, github, categories } = req.body;
 
-        if(!domain || !name) {
+        if(!domain) {
             return res.status(400).json({ msg: 'Please fill in all required fields' });
         }
 
@@ -106,48 +179,65 @@ const createApp = async (req, res) => {
             return res.status(409).json({ msg: 'App already exists' });
         }
 
-        // Get app info from URL
-        try {
-            const appInfo = await axios.get("https://" + domainNew);
-            const $ = cheerio.load(appInfo.data);
+        const getMeta = await getAppMeta(domainNew);
 
-            const appMeta = {
-                description: $('meta[name="description"]')?.attr('content'),
-                keywords: $('meta[name="keywords"]')?.attr('content'),
-                title: $('title')?.text(),
-                author: $('meta[name="author"]')?.attr('content'),
-                icon: $('link[rel="icon"]')?.attr('href'),
-                thumbnail: $('meta[property="og:image"]')?.attr('content'),
-            }
-
+        if(getMeta.msg === "Success") {
             const appNew = new App({
                 domain: domainNew,
-                name: name,
                 developer: developer,
-                media: {
-                    video: video,
-                    images: images
-                },
-                monetization: monetization,
-                user: req.user ? req.user._id : null,
-                description: description,
                 categories: categories,
-                tags: tags,
-                meta: appMeta,
+                user: req.user ? req.user._id : null,
                 github: github,
-                verified: false
+                verified: false,
+                url: 'https://' + domainNew,
+                tags: getMeta.tags,
+                meta: getMeta.meta,
+                ogMeta: getMeta.ogMeta,
+                twitterMeta: getMeta.twitterMeta,
             });
 
             try {
                 await appNew.save();
                 return res.status(201).json(appNew);
             } catch (err) {
-                return res.status(500).json({ msg: "Server error" });
+                return res.status(500).json({ msg: "Server error. Not able to save the app" });
             }
-        } catch (err) {
-            return res.status(500).json({ msg: "Not able to get website info, please check the URL and try again." });
+        } else {
+            return res.status(500).json({ msg: getMeta.msg });
         }
     } catch (err) {
+        console.log(err);
+        return res.status(500).json({ msg: "Server error" });
+    }
+}
+
+
+// PUT /apps/app/meta/:domain
+// Updates the app meta
+// Private
+const updateAppMeta = async (req, res) => {
+    try {
+        const app = await App.findOne({ domain: req.params.domain });
+
+        if(!app) {
+            return res.status(404).json({ msg: 'App not found' });
+        }
+        
+        const getMeta = await getAppMeta(req.params.domain);
+
+        if(getMeta.msg === "Success") {
+            app.meta = getMeta.meta;
+            app.ogMeta = getMeta.ogMeta;
+            app.twitterMeta = getMeta.twitterMeta;
+            app.tags = getMeta.tags;
+            await app.save();
+            return res.status(200).json(app);
+        } else {
+            return res.status(500).json({ msg: getMeta.msg });
+        }
+    }
+    catch (err) {
+        console.log(err);
         return res.status(500).json({ msg: "Server error" });
     }
 }
@@ -177,12 +267,13 @@ const updateApp = async (req, res) => {
 
 
 
-
 module.exports = {
+    getMe,
     getApp,
     getDeveloperApps,
     getAppsByCategory,
     getAppsBySearch,
     createApp,
+    updateAppMeta,
     updateApp
 }

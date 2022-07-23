@@ -122,6 +122,9 @@ a {
 .fill-light svg {
     fill: var(--text-light);
 }
+.text-black {
+    color: #000000;
+}
 
 .bold {
     font-weight: 600;
@@ -131,6 +134,9 @@ a {
 }
 .text-uppercase {
     text-transform: uppercase;
+}
+.text-capitalize {
+    text-transform: capitalize;
 }
 
 .white-space-nowrap {

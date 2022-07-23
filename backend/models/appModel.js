@@ -7,6 +7,10 @@ const appSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    url: {
+        type: String,
+        required: true
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -17,42 +21,27 @@ const appSchema = new mongoose.Schema({
         ref: 'Developer',
         required: true
     },
-    name: {
-        type: String,
-        required: true
-    },
-    monetization: {
-        type: String,
-        required: false,
-        enum: ['free', 'paid', 'subscription', 'ads', 'other']
-    },
-    description: {
-        type: String,
-        required: false
-    },
     categories: {
         type: Array,
+        required: false
+    },
+    github: {
+        type: String,
         required: false
     },
     tags: {
         type: Array,
         required: false
     },
-    thumbnail: {
-        type: String,
+    verified: {
+        type: Boolean,
         required: false
     },
-    media: {
-        video: {
+    meta: {
+        title: {
             type: String,
             required: false
         },
-        images: {
-            type: Array,
-            required: false
-        }
-    },
-    meta: {
         description: {
             type: String,
             required: false
@@ -61,7 +50,15 @@ const appSchema = new mongoose.Schema({
             type: String,
             required: false
         },
-        title: {
+        classification: {
+            type: String,
+            required: false
+        },
+        subject: {
+            type: String,
+            required: false
+        },
+        copyright: {
             type: String,
             required: false
         },
@@ -69,28 +66,87 @@ const appSchema = new mongoose.Schema({
             type: String,
             required: false
         },
+        reply: {
+            type: String,
+            required: false
+        },
+        category: {
+            type: String,
+            required: false
+        },
+        coverage: {
+            type: String,
+            required: false
+        },
+        distribution: {
+            type: String,
+            required: false
+        },
+        rating: {
+            type: String,
+            required: false
+        },
         icon: {
             type: String,
             required: false
         },
-        thumbnail: {
+    },
+    ogMeta: {
+        title: {
+            type: String,
+            required: false
+        },
+        name: {
+            type: String,
+            required: false
+        },
+        description: {
+            type: String,
+            required: false
+        },
+        type: {
+            type: String,
+            required: false
+        },
+        image: {
+            type: String,
+            required: false
+        },
+        url: {
+            type: String,
+            required: false
+        },
+    },
+    twitterMeta: {
+        twitter: {
+            type: String,
+            required: false
+        },
+        url: {
+            type: String,
+            required: false
+        },
+        description: {
+            type: String,
+            required: false
+        },
+        title: {
+            type: String,
+            required: false
+        },
+        image: {
+            type: String,
+            required: false
+        },
+        googlePlayId: {
+            type: String,
+            required: false
+        },
+        appStoreId: {
             type: String,
             required: false
         }
     },
-    verified: {
-        type: Boolean,
-        required: false
-    },
-    github: {
-        type: String,
-        required: false
-    },
-    rank: {
-        type: Number,
-        required: false,
-        unique: true
-    }
 }, { timestamps: true });
 
 

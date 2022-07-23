@@ -44,7 +44,8 @@ const Avatar = ({image, name, size, width, height, className, onClick}) => {
       className={`avatar${size ? ` avatar-${size}` : ''}${className ? ` ${className}` : ''}`}
       onClick={onClick}
       style={{
-        backgroundColor: stringToColor(name),
+        backgroundColor: "var(--color-secondary)",
+        // backgroundColor: stringToColor(name),
         width: width ? width : undefined,
         height: height ? height : undefined
       }}

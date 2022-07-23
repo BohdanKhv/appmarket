@@ -20,7 +20,7 @@ const UserMenu = ({openMenu, setOpenMenu}) => {
                 <Avatar
                 name={user.fullName}
                 image={user.avatar ? user.avatar : null}
-                size="sm"
+                size="md"
                 className="menu-btn"
                 onClick={() => setOpenMenu(!openMenu)}
                 />

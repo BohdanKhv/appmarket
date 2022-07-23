@@ -83,8 +83,8 @@ body {
 
 .content {
   /* padding: 0 16px 0 calc(var(--sidebar-width) + 16px); */
-  padding: 0 16px;
-  margin-top: calc(var(--nav-height));
+  padding: var(--nav-height) 16px 0 16px;
+  /* margin-top: calc(var(--nav-height)); */
 }
 .content-body {
   padding: 16px 0;
@@ -140,7 +140,7 @@ table th {
 @media (max-width: 768px) {
   .content {
     padding: var(--nav-height-sm) 8px calc(var(--nav-height) + 16px) 8px;
-    margin-top: calc(var(--nav-height-sm));
+    /* margin-top: calc(var(--nav-height-sm)); */
   }
 
   .side-bar-width {

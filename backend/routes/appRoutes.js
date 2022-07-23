@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/authMiddleware');
 const {
+    getMe,
     getApp,
     getDeveloperApps,
     getAppsByCategory,
@@ -11,6 +12,7 @@ const {
 } = require('../controllers/appControllers');
 
 
+router.route('/developer/me').get(protect, getMe);
 router.route('/app/:domain').get(getApp);
 router.route('/developer/:id').get(getDeveloperApps);
 router.route('/category/:category').get(getAppsByCategory);

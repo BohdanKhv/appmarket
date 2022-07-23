@@ -600,6 +600,39 @@
         "category": "Travel and Tourism, Other Travel and Tourism"
     },
     {
+        "category": "Tools"
+    },
+    {
+        "category": "Tools, Web Development Tools"
+    },
+    {
+        "category": "Tools, Database Tools"
+    },
+    {
+        "category": "Tools, Mobile Development Tools"
+    },
+    {
+        "category": "Tools, Game Development Tools"
+    },
+    {
+        "category": "Tools, Video Editing Tools"
+    },
+    {
+        "category": "Tools, Photo Editing Tools"
+    },
+    {
+        "category": "Tools, Management Tools"
+    },
+    {
+        "category": "Tools, Design Tools"
+    },
+    {
+        "category": "Tools, Engineering Tools"
+    },
+    {
+        "category": "Tools, Other Tools"
+    },
+    {
         "category": "Vehicles"
     },
     {
@@ -622,6 +655,12 @@
     },
     {
         "category": "Vehicles, Other Vehicles"
+    },
+    {
+        "category": "Other"
+    },
+    {
+        "category": "Other, Personal"
     },
     {
         "category": "Adult"
