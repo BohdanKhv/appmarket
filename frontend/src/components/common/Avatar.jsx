@@ -51,7 +51,7 @@ const Avatar = ({image, name, size, width, height, className, onClick}) => {
       }}
     >
       { !image ?
-        name.slice(0, 2).toUpperCase()
+        name ? name.slice(0, 2).toUpperCase() : "U"
         : 
         <img
           className={`${loading ? '' : ' avatar-loading'}`}

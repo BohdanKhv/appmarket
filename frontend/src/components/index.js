@@ -5,6 +5,7 @@ import Icon from "./inputs/Icon";
 import CustomSelect from "./inputs/CustomSelect";
 import Search from "./inputs/Search";
 import Textarea from "./inputs/Textarea";
+import UploadImage from "./inputs/UploadImage";
 
 import Nav from "./navigation/Nav";
 import Header from "./navigation/Header";
@@ -37,6 +38,7 @@ export {
     CustomSelect,
     Search,
     Textarea,
+    UploadImage,
 
     Nav,
     Header,

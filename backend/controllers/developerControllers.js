@@ -25,13 +25,14 @@ const getDeveloper = async (req, res) => {
 // Private
 const getMe = async (req, res) => {
     try {
-        const developer = await Developer.findById(req.user._id);
+        const developer = await Developer.findOne({user: req.user._id});
         if (developer) {
             return res.status(200).json(developer);
         } else {
             return res.status(404).json({ msg: 'Developer not found' });
         }
     } catch (err) {
+        console.log(err);
         return res.status(500).json({ msg: "Server error" });
     }
 }
@@ -82,16 +83,15 @@ const createDeveloper = async (req, res) => {
 // Private
 const updateDeveloper = async (req, res) => {
     try {
-        const developer = await Developer.findById(req.user._id);
-
-        if (!developer) {
+        const updatedDeveloper = await Developer.findOneAndUpdate({ user: req.user._id }, req.body, { new: true });
+        
+        if(!updatedDeveloper) {
             return res.status(404).json({ msg: 'Developer not found' });
         }
 
-        const updatedDeveloper = await Developer.findByIdAndUpdate(req.user._id, req.body, { new: true });
-
         return res.status(200).json(updatedDeveloper);
     } catch (err) {
+        console.log(err);
         return res.status(500).json({ msg: "Server error" });
     }
 }

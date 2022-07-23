@@ -25,26 +25,6 @@ const developerSchema = new mongoose.Schema({
         required: false,
         maxlength: [500, 'Bio can not be more than 500 characters']
     },
-    address: {
-        type: String,
-        required: false
-    },
-    city: {
-        type: String,
-        required: false
-    },
-    state: {
-        type: String,
-        required: false
-    },
-    country: {
-        type: String,
-        required: false
-    },
-    zip: {
-        type: String,
-        required: false
-    },
     website: {
         type: String,
         required: false,
@@ -61,10 +41,6 @@ const developerSchema = new mongoose.Schema({
             'Please add a valid email'
         ]
     },
-    privacyPolicy: {
-        type: String,
-        required: false
-    }
 }, { timestamps: true });
 
 

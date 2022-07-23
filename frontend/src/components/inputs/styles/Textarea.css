@@ -32,6 +32,7 @@
     overflow: hidden;
     line-height: 1.1rem;
     resize: none;
+    font-size: 14px;
 }
 
 .textarea textarea:-webkit-autofill {
@@ -48,7 +49,8 @@
     transition: var(--transition-duration);
     display: flex;
     align-items: center;
-    top: 15px;
+    transform: translate(0, 16px) scale(1);
+    left: 16px;
 }
 
 .textarea-label svg {
@@ -58,10 +60,8 @@
 }
 
 .textarea-label.focused {
-    top: 4px;
-    opacity: 0.8;
-    font-size: 0.9rem;
-    /* transform: scale(0.75) translateX(0); */
+    transform: translate(0, 4px) scale(0.75);
+    left: 12px;
 }
 
 .textarea-label.focused svg {

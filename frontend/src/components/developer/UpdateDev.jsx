@@ -1,28 +1,35 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Button, Input, Textarea, FsModal } from '../../components';
-import { plusIcon } from '../../assets/img/icons';
-import { createDeveloper } from '../../features/developer/developerSlice';
+import { updateDeveloper } from '../../features/developer/developerSlice';
+import { useEffect } from 'react';
 
 
-const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
+const UpdateDev = ({isFsmOpen, setIsFsmOpen}) => {
     const dispatch = useDispatch()
     const [step, setStep] = useState(1)
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [website, setWebsite] = useState('')
-    const [bio, setBio] = useState('')
+    const { isLoading, isError, msg, developer, isSuccess } = useSelector(state => state.developer)
+
+    const [name, setName] = useState(developer.name || '')
+    const [email, setEmail] = useState(developer.email || '')
+    const [website, setWebsite] = useState(developer.website || '')
+    const [bio, setBio] = useState(developer.bio || '')
 
     const [errMsg, setErrMsg] = useState('')
 
-    const { isLoading, isError, msg } = useSelector(state => state.developer)
+
+    useEffect(() => {
+        if(isSuccess) {
+            setIsFsmOpen(false)
+        }
+    }, [isSuccess])
 
 
     const onSubmit = () => {
         setErrMsg('')
         if(name) {
-            dispatch(createDeveloper({ name, email, website, bio }))
+            dispatch(updateDeveloper({ name, email, website, bio }))
         } else {
             setErrMsg("Please enter developer name")
         }
@@ -30,19 +37,19 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
 
     return (
         <FsModal
-            title={'Become a developer'}
+            title={'Update Info'}
             fsmOpen={isFsmOpen}
             setIsFsmOpen={setIsFsmOpen}
         >
             <div className="flex flex-col justify-between h-100 mx-w-md mx-auto">
                 <div className="flex-grow-1">
                     <div className="fs-1 py-5 px-3">
-                        Step <span className="text-primary">{step}</span> of 3
+                        Step <span className="text-primary">{step}</span> of 2
                     </div> 
                     {step === 1 && (
                         <>
                             <div className="fs-3 px-3">
-                                Let's start with the basic developer information
+                                Basic info about the developer.
                             </div>
                             <Input
                                 label="Name"
@@ -57,7 +64,7 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
                                 label="Bio"
                                 value={bio}
                                 placeholder="Bio"
-                                className="pt-5"
+                                className="mt-5"
                                 maxLength={500}
                                 onChange={(e) => setBio(e.target.value)}
                             />
@@ -66,7 +73,7 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
                     {step === 2 && (
                         <>
                             <div className="fs-3 px-3">
-                                Add contact information
+                                Contact info about the developer.
                             </div>
                             <Input
                                 label="Email"
@@ -106,7 +113,6 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
                         {(step === 1) ? 'Cancel' : 'Back'}
                     </Button>
                     <Button
-                        icon={plusIcon}
                         color={name.length > 0 && email.length > 0 ? 'primary' : 'disabled'}
                         onClick={() => {
                             step === 1 ? setStep(step + 1) : onSubmit()
@@ -115,7 +121,7 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
                         size="lg"
                         disabled={name.length === 0 || email.length === 0 || isLoading}
                     >
-                        {(step === 3) ? 'Create' : 'Next'}
+                        {(step === 2) ? 'Save' : 'Next'}
                     </Button>
                 </div>
             </div>
@@ -123,4 +129,4 @@ const CreateDev = ({isFsmOpen, setIsFsmOpen}) => {
     )
 }
 
-export default CreateDev
+export default UpdateDev
