@@ -8,6 +8,8 @@ const Image = ({
     onClick,
     onMouseEnter,
     onMouseLeave,
+    width,
+    height,
 }) => {
     const [isImageLoaded, setIsImageLoaded] = useState(false)
     const imageRef = useRef(null)
@@ -30,6 +32,8 @@ const Image = ({
                 alt={alt}
                 ref={imageRef}
                 onClick={onClick}
+                width={width}
+                height={height}
                 decoding="async"
                 title={alt}
                 onMouseEnter={onMouseEnter}

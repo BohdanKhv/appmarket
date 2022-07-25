@@ -1,13 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IconButton, Avatar, UploadImage, UpdateDev } from '../';
+import { IconButton, Avatar, UploadImage, UpdateDev, Skeleton } from '../';
 import { getMe, resetDeveloper, updateDeveloper } from '../../features/developer/developerSlice';
 import { settingsIcon } from '../../assets/img/icons';
 
 
 const DevTab = () => {
     const dispatch = useDispatch()
-    const { developer } = useSelector(state => state.developer)
+    const { developer, isLoading } = useSelector(state => state.developer)
     const [isFsmOpen, setIsFsmOpen] = useState(false)
     const inputRef = useRef(null)
 
@@ -110,6 +110,19 @@ const DevTab = () => {
                 />
             </>
             }
+            {!developer && isLoading && (
+                <>
+                <Skeleton
+                    height={300}
+                    animation="wave"
+                />
+                <Skeleton
+                    height={200}
+                    className="mt-3"
+                    animation="wave"
+                />
+                </>
+            )}
         </>
     )
 }

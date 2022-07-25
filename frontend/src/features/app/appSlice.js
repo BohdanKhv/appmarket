@@ -9,6 +9,7 @@ const initialState = {
     isUpdating: false,
     isError: false,
     isSuccess: false,
+    updateSuccess: false,
     offset: 0,
     limit: 30,
     hasMore: true,
@@ -206,6 +207,7 @@ const appSlice = createSlice({
             state.appLoading = null;
             state.isError = false;
             state.isSuccess = false;
+            state.updateSuccess = false;
             state.isLoading = false;
             state.isUpdating = false;
             state.offset = 0;
@@ -316,11 +318,13 @@ const appSlice = createSlice({
             state.appLoading = state.apps.find(app => app.domain === action.meta.arg).domain;
             state.isError = false;
             state.msg = '';
+            state.updateSuccess = false;
         });
         builder.addCase(updateAppMeta.fulfilled, (state, action) => {
             state.appLoading = null;
             const index = state.apps.findIndex(app => app._id === action.payload._id);
             state.apps[index] = action.payload;
+            state.updateSuccess = true;
         });
         builder.addCase(updateAppMeta.rejected, (state, action) => {
             state.appLoading = null;
@@ -335,11 +339,13 @@ const appSlice = createSlice({
             state.isSuccess = false;
             state.isError = false;
             state.msg = '';
+            state.updateSuccess = false;
         });
         builder.addCase(updateApp.fulfilled, (state, action) => {
             state.appLoading = null;
             const index = state.apps.findIndex(app => app._id === action.payload._id);
             state.apps[index] = action.payload;
+            state.updateSuccess = true;
         });
         builder.addCase(updateApp.rejected, (state, action) => {
             state.appLoading = null;

@@ -122,6 +122,19 @@
     /* background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-light)); */
 }
 
+.bg-cover {
+    background-size: cover;
+    background-position: center;
+}
+.obj-cover {
+    object-fit: cover;
+    object-position: center;
+}
+.obj-contain {
+    object-fit: contain;
+    object-position: center;
+}
+
 .bg-hover {
     transition-duration: var(--transition-duration);
 }

@@ -86,10 +86,10 @@ const Nav = () => {
           }
         </div>
       </div>
+      <div className="mx-2 flex align-center flex-grow-1 nav-search">
+        <Search />
+      </div>
       <div className="nav-right">
-        <div className="me-2">
-          <Search />
-        </div>
         <UserMenu
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}

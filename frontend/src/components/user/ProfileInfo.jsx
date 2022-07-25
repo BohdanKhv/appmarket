@@ -104,64 +104,64 @@ const ProfileInfo = () => {
             </div>
         </div>
     </div>
-        <FsModal
-            title={'Update Info'}
-            fsmOpen={isFsmOpen}
-            setIsFsmOpen={setIsFsmOpen}
-        >
-            <div className="flex flex-col justify-between h-100 mx-w-md mx-auto">
-                <div className="flex-grow-1">
-                    <div className="fs-2 py-5 px-3">
-                        Basic info about <span className="text-primary">{user.fullName}</span>
-                    </div> 
-                    <Input
-                        label="Full Name"
-                        value={fullName}
-                        type="text"
-                        required
-                        placeholder="Full Name"
-                        onChange={(e) => setFullName(e.target.value)}
-                    />
-                    <Input
-                        label="Email"
-                        value={email}
-                        type="email"
-                        placeholder="Email"
-                        className="pt-5"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <Textarea
-                        label="Bio"
-                        value={bio}
-                        placeholder="Bio"
-                        className="mt-5"
-                        maxLength={500}
-                        onChange={(e) => setBio(e.target.value)}
-                    />
-                    {(isError) && <p className="pt-3 text-danger">{msg}</p>}
-                    {(errMsg) && <p className="pt-3 text-danger">{errMsg}</p>}
-                </div>
-                <div className="p-3 flex justify-end gap-3">
-                    <Button
-                        onClick={() => setIsFsmOpen(false)}
-                        variant="outline"
-                        size="lg"
-                        color="secondary"
-                    >
-                        Cancel
-                    </Button>
-                    <Button
-                        color={fullName.length > 0 && email.length > 0 ? 'primary' : 'disabled'}
-                        onClick={onSubmit}
-                        loading={isLoading}
-                        size="lg"
-                        disabled={fullName.length === 0 || email.length === 0 || isLoading}
-                    >
-                        Save
-                    </Button>
-                </div>
+    <FsModal
+        title={'Update Info'}
+        fsmOpen={isFsmOpen}
+        setIsFsmOpen={setIsFsmOpen}
+    >
+        <div className="flex flex-col justify-between h-100 mx-w-md mx-auto">
+            <div className="flex-grow-1">
+                <div className="fs-2 py-5 px-3">
+                    Basic info about <span className="text-primary">{user.fullName}</span>
+                </div> 
+                <Input
+                    label="Full Name"
+                    value={fullName}
+                    type="text"
+                    required
+                    placeholder="Full Name"
+                    onChange={(e) => setFullName(e.target.value)}
+                />
+                <Input
+                    label="Email"
+                    value={email}
+                    type="email"
+                    placeholder="Email"
+                    className="pt-5"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <Textarea
+                    label="Bio"
+                    value={bio}
+                    placeholder="Bio"
+                    className="mt-5"
+                    maxLength={500}
+                    onChange={(e) => setBio(e.target.value)}
+                />
+                {(isError) && <p className="pt-3 text-danger">{msg}</p>}
+                {(errMsg) && <p className="pt-3 text-danger">{errMsg}</p>}
             </div>
-        </FsModal>
+            <div className="p-3 flex justify-end gap-3">
+                <Button
+                    onClick={() => setIsFsmOpen(false)}
+                    variant="outline"
+                    size="lg"
+                    color="secondary"
+                >
+                    Cancel
+                </Button>
+                <Button
+                    color={fullName.length > 0 && email.length > 0 ? 'primary' : 'disabled'}
+                    onClick={onSubmit}
+                    loading={isLoading}
+                    size="lg"
+                    disabled={fullName.length === 0 || email.length === 0 || isLoading}
+                >
+                    Save
+                </Button>
+            </div>
+        </div>
+    </FsModal>
     </>
     )
 }

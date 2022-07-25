@@ -7,7 +7,8 @@ const Search = ({mobile}) => {
             placeholder="Search"
             type="text"
             name="search"
-            label="Search for apps"
+            label="Search for apps, tools, and more"
+            className="flex-grow-1"
             icon={searchIcon}
             size={mobile ? 'sm' : ''}
         />

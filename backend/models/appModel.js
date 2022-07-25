@@ -41,6 +41,21 @@ const appSchema = new mongoose.Schema({
         type: Boolean,
         required: false
     },
+    upVotes: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    downVotes: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    favorites: {
+        type: Number,
+        required: false,
+        default: 0
+    },
     meta: {
         title: {
             type: String,

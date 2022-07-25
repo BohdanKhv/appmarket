@@ -316,6 +316,9 @@
 .h-100 {
     height: 100%;
 }
+.h-webkit {
+    height: -webkit-fill-available;
+}
 
 .w-0 {
     width: 0%;
@@ -392,4 +395,16 @@
     width: 46px;
     height: 46px;
     fill: var(--text-dark);
+}
+
+/* z-index */
+
+.z-1 {
+    z-index: 1;
+}
+.z-0 {
+    z-index: 0;
+}
+.z-99 {
+    z-index: 99;
 }

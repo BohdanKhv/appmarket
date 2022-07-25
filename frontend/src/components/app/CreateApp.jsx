@@ -65,12 +65,20 @@ const CreateApp = () => {
                 />
             )}
             <div
+                className="p-3 bg-hover border-radius pointer"
                 onClick={() => setIsFsmOpen(true)}
-                className="box justify-center align-center bg-secondary flex-col"
             >
-                <div className="icon icon-xl pb-2">{plusIcon}</div>
-                <div className="fs-2">
-                    Create a new app
+                <div
+                    className="bg-main border-radius box-shadow-sm flex align-center justify-center"
+                    style={{
+                        width: '100%',
+                        height: '75px',
+                    }}
+                >
+                    <div className="icon icon-xl p-2">{plusIcon}</div>
+                    <div className="fs-3 text-center p-2">
+                        Create a new app
+                    </div>
                 </div>
             </div>
             <FsModal

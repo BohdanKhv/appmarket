@@ -28,7 +28,8 @@ import UpdateDev from './developer/UpdateDev';
 
 import AppTab from "./app/AppTab";
 import CreateApp from "./app/CreateApp";
-import UpdateMeta from "./app/UpdateMeta";
+import AppItem from "./app/AppItem";
+import AppMenu from "./app/AppMenu";
 
 import ProfileInfo from "./user/ProfileInfo";
 
@@ -66,7 +67,8 @@ export {
     
     AppTab,
     CreateApp,
-    UpdateMeta,
+    AppItem,
+    AppMenu,
 
     ProfileInfo,
 
