@@ -14,7 +14,7 @@
     border-radius: 50%;
     overflow: hidden;
     user-select: none;
-    color: #000000;
+    color: var(--text-dark);
     background-color: var(--color-primary);
     transition: var(--transition-duration);
     border: 1px solid transparent;
@@ -45,6 +45,7 @@
     object-fit: cover;
     color: transparent;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .avatar .avatar-loading {

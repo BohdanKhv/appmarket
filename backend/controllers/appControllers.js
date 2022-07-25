@@ -28,7 +28,7 @@ const getAppMeta = async (domain) => {
             category: $('meta[name="category"]')?.attr('content'),
             coverage: $('meta[name="coverage"]')?.attr('content'),
             rating: $('meta[name="rating"]')?.attr('content'),
-            icon: $('link[rel="icon"]')?.attr('href'),
+            icon: $('link[rel="icon"]')?.attr('href') || $('link[rel="shortcut icon"]')?.attr('href'),
             iconApple: $('link[rel="apple-touch-icon"]')?.attr('href'),
         }
 
@@ -155,13 +155,12 @@ const getAppsBySearch = async (req, res) => {
 // Public
 const createApp = async (req, res) => {
     try {
-        const developer = await Developer.findOne({ user: req.user._id });
+        const { domain, github, categories, publisher } = req.body;
+        const developer = await Developer.findOne({ developer: req.user._id });
 
-        if (!developer) {
+        if (!developer && !publisher) {
             return res.status(404).json({ msg: 'You are not a developer, please register a developer page.' });
         }
-
-        const { domain, github, categories } = req.body;
 
         if(!domain) {
             return res.status(400).json({ msg: 'Please fill in all required fields' });
@@ -185,6 +184,7 @@ const createApp = async (req, res) => {
             const appNew = new App({
                 domain: domainNew,
                 developer: developer,
+                publisher: publisher,
                 categories: categories,
                 user: req.user ? req.user._id : null,
                 github: github,
@@ -266,6 +266,29 @@ const updateApp = async (req, res) => {
 }
 
 
+// DELETE /apps/app/:domain
+// Deletes an app with the given domain
+// Private
+const deleteApp = async (req, res) => {
+    try {
+        const app = await App.findOne({ domain: req.params.domain });
+
+        if (!app) {
+            return res.status(404).json({ msg: 'App not found' });
+        }
+
+        if(app.user.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ msg: 'Not authorized' });
+        }
+        
+        await app.remove();
+        return res.status(200).json(app);
+    } catch (err) {
+        return res.status(500).json({ msg: "Server error" });
+    }
+}
+
+
 
 module.exports = {
     getMe,
@@ -275,5 +298,6 @@ module.exports = {
     getAppsBySearch,
     createApp,
     updateAppMeta,
-    updateApp
+    updateApp,
+    deleteApp,
 }

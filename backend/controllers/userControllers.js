@@ -136,7 +136,7 @@ const loginUser = async (req, res) => {
 // @access  Private
 const updateUser = async (req, res) => {
     try {
-        const { email, fullName, avatar } = req.body;
+        const { email, fullName, bio, avatar } = req.body;
 
         // Update user
         const updatedUser = await User.findOneAndUpdate(
@@ -145,14 +145,25 @@ const updateUser = async (req, res) => {
                 $set: {
                     email,
                     fullName,
-                    avatar
+                    bio,
+                    avatar,
                 }
             },
             { new: true }
         );
 
+        const user = {
+            _id: updatedUser._id,
+            email: updatedUser.email,
+            fullName: updatedUser.fullName,
+            bio: updatedUser.bio,
+            avatar: updatedUser.avatar,
+            type: updatedUser.type,
+            token: generateToken(updatedUser._id)
+        }
+
         if (updatedUser) {
-            return res.status(200).json(updatedUser);
+            return res.status(200).json(user);
         } else {
             return res.status(400).json({
                 msg: 'Invalid user data'

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 
-const favoriteSchema = new mongoose.Schema({
+const listSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -12,8 +12,12 @@ const favoriteSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'App',
         required: true
+    },
+    list: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('Favorite', favoriteSchema);
+module.exports = mongoose.model('List', listSchema);

@@ -182,11 +182,14 @@ const userSlice = createSlice({
         builder.addCase(updateUser.pending, (state) => {
             state.isLoading = true;
             state.isError = false;
+            state.isSuccess = false;
+            state.msg = '';
         });
         builder.addCase(updateUser.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
             state.user = action.payload;
+            localStorage.setItem('user', JSON.stringify(state.user));
         });
         builder.addCase(updateUser.rejected, (state, action) => {
             state.isLoading = false;

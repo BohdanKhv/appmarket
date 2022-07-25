@@ -1,9 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IconButton, FsModal, Avatar, UploadImage } from '../../components';
+import { IconButton, Avatar, UploadImage, UpdateDev } from '../';
 import { getMe, resetDeveloper, updateDeveloper } from '../../features/developer/developerSlice';
-import { arrowIcon, settingsIcon } from '../../assets/img/icons';
-import UpdateDev from './UpdateDev';
+import { settingsIcon } from '../../assets/img/icons';
 
 
 const DevTab = () => {

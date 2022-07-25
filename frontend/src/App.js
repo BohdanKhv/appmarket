@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Nav } from './components';
+import { Nav, AuthGate } from './components';
 import {
   Home,
   Developer,
@@ -38,8 +38,8 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home/>} />
 
-            <Route path='/user/developer' element={<Dashboard/>} />
-            <Route path='/user/profile' element={<Profile/>} />
+            <Route path='/user/developer' element={<AuthGate><Dashboard/></AuthGate>} />
+            <Route path='/user/profile' element={<AuthGate><Profile/></AuthGate>} />
 
             <Route path='/store/dev' element={<Developer/>} />
             <Route path='/store/details' element={<DetailedApp/>} />

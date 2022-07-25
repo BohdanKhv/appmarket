@@ -19,7 +19,11 @@ const appSchema = new mongoose.Schema({
     developer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Developer',
-        required: true
+        required: false
+    },
+    publisher: {
+        type: String,
+        required: false
     },
     categories: {
         type: Array,

@@ -9,12 +9,14 @@ const {
     getAppsBySearch,
     createApp,
     updateAppMeta,
-    updateApp
+    updateApp,
+    deleteApp
 } = require('../controllers/appControllers');
 
 router.route('/developer/me').get(protect, getMe);
 router.route('/meta/:domain').get(protect, updateAppMeta);
 router.route('/app/:domain').get(getApp);
+router.route('/app/:domain').delete(protect, deleteApp);
 router.route('/developer/:id').get(getDeveloperApps);
 router.route('/category/:category').get(getAppsByCategory);
 router.route('/search/:query').get(getAppsBySearch);

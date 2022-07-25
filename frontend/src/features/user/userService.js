@@ -44,10 +44,6 @@ export const updateUser = async (userData, token) => {
 
     const response = await axios.put(API_URL, userData, config);
 
-    if (response.data) {
-        localStorage.setItem('user', JSON.stringify(response.data)); // Set user in localStorage
-    }
-
     return response.data;
 }
 

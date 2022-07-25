@@ -175,6 +175,26 @@ export const updateApp = createAsyncThunk(
 );
 
 
+// Delete app
+export const deleteApp = createAsyncThunk(
+    'app/deleteApp',
+    async (data, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().user.user.token;
+            return await appService.deleteApp(data, token);
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.msg) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+
 // Create slice
 const appSlice = createSlice({
     name: 'apps',
@@ -322,6 +342,24 @@ const appSlice = createSlice({
             state.apps[index] = action.payload;
         });
         builder.addCase(updateApp.rejected, (state, action) => {
+            state.appLoading = null;
+            state.isLoading = false;
+            state.isError = true;
+            state.msg = action.payload;
+        });
+
+        // delete app
+        builder.addCase(deleteApp.pending, (state, action) => {
+            state.appLoading = state.apps.find(app => app.domain === action.meta.arg).domain;
+            state.isSuccess = false;
+            state.isError = false;
+            state.msg = '';
+        });
+        builder.addCase(deleteApp.fulfilled, (state, action) => {
+            state.appLoading = null;
+            state.apps = state.apps.filter(app => app._id !== action.payload._id);
+        });
+        builder.addCase(deleteApp.rejected, (state, action) => {
             state.appLoading = null;
             state.isLoading = false;
             state.isError = true;

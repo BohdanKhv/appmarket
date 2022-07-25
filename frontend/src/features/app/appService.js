@@ -82,6 +82,20 @@ const updateApp = async (data, token) => {
 }
 
 
+// delete app
+const deleteApp = async (domain, token) => {
+    const conf = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.delete(`${API_URL}/app/${domain}`, conf);
+    return response.data;
+}
+
+
 const profileService = {
     getMe,
     getApp,
@@ -90,7 +104,8 @@ const profileService = {
     getAppsBySearch,
     createApp,
     updateAppMeta,
-    updateApp
+    updateApp,
+    deleteApp
 }
 
 export default profileService;

@@ -1,8 +1,11 @@
-import React from 'react'
+import { ProfileInfo, Header } from "../components"
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div className="content mx-w-lg mx-auto">
+      <Header label={'Profile'} />
+      <ProfileInfo/>
+    </div>
   )
 }
 

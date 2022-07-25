@@ -24,10 +24,15 @@ import Skeleton from "./feedback/Skeleton";
 
 import DevTab from "./developer/DevTab";
 import CreateDev from "./developer/CreateDev";
+import UpdateDev from './developer/UpdateDev';
 
 import AppTab from "./app/AppTab";
 import CreateApp from "./app/CreateApp";
 import UpdateMeta from "./app/UpdateMeta";
+
+import ProfileInfo from "./user/ProfileInfo";
+
+import AuthGate from "./gate/AuthGate";
 
 
 export {
@@ -57,8 +62,13 @@ export {
 
     DevTab,
     CreateDev,
+    UpdateDev,
+    
     AppTab,
-
     CreateApp,
-    UpdateMeta
+    UpdateMeta,
+
+    ProfileInfo,
+
+    AuthGate,
 }
