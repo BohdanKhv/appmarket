@@ -30,11 +30,13 @@ const AppTab = () => {
                 ))}
             </div>
             {isLoading &&
-                Array
-                    .from({ length: 7 })
-                    .map((_, index) => (
-                        <Skeleton key={index} height={200} animation="wave" index={index} />
-                    ))
+                <div className="flex flex-wrap gap-3 mt-3">
+                    {Array
+                        .from({ length: 7 })
+                        .map((_, index) => (
+                            <Skeleton key={index} height={75} animation="wave" index={index} />
+                        ))}
+                </div>
                 }
             </div>
     )

@@ -18,8 +18,15 @@ const getMe = async (token) => {
 }
 
 // get app by domain name
-const getApp = async (domain) => {
-    const response = await axios.get(`${API_URL}/${domain}`);
+const getApp = async (domain, token) => {
+    const conf = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.get(`${API_URL}/app/${domain}`, conf);
     return response.data;
 }
 
@@ -96,6 +103,34 @@ const deleteApp = async (domain, token) => {
 }
 
 
+// Rate app
+const rateApp = async (data, token) => {
+    const conf = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.post(`/api/ratings/`, data, conf);
+    return response.data;
+}
+
+
+// Delete rating
+const deleteRating = async (appId, token) => {
+    const conf = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.delete(`/api/ratings/${appId}`, conf);
+    return response.data;
+}
+
+
 const profileService = {
     getMe,
     getApp,
@@ -105,7 +140,9 @@ const profileService = {
     createApp,
     updateAppMeta,
     updateApp,
-    deleteApp
+    deleteApp,
+    rateApp,
+    deleteRating
 }
 
 export default profileService;

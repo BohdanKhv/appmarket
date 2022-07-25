@@ -56,6 +56,11 @@ const appSchema = new mongoose.Schema({
         required: false,
         default: 0
     },
+    comments: {
+        type: Number,
+        required: false,
+        default: 0
+    },
     meta: {
         title: {
             type: String,

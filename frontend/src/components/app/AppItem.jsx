@@ -13,7 +13,7 @@ const AppItem = ({ app, showMenu }) => {
 
     return (
         <div className="flex bg-hover p-3 border-radius pointer flex-grow-1">
-            <Link to={`/store/details?id=${app._id}`}
+            <Link to={`/store/details?domain=${app.domain}`}
                 style={{
                     width: '150px',
                     height: '75px',

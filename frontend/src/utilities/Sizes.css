@@ -381,6 +381,11 @@
     height: 24px;
     fill: var(--text-dark);
 }
+.icon-xs svg {
+    width: 10px;
+    height: 10px;
+    fill: var(--text-dark);
+}
 .icon-sm svg {
     width: 16px;
     height: 16px;

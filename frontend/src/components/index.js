@@ -30,6 +30,7 @@ import AppTab from "./app/AppTab";
 import CreateApp from "./app/CreateApp";
 import AppItem from "./app/AppItem";
 import AppMenu from "./app/AppMenu";
+import AppInfo from "./app/AppInfo";
 
 import ProfileInfo from "./user/ProfileInfo";
 
@@ -69,6 +70,7 @@ export {
     CreateApp,
     AppItem,
     AppMenu,
+    AppInfo,
 
     ProfileInfo,
 

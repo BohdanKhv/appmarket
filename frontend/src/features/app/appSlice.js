@@ -4,6 +4,7 @@ import appService from './appService';
 
 const initialState = {
     apps: [],
+    detailedApp: null,
     appLoading: null,
     isLoading: false,
     isUpdating: false,
@@ -42,7 +43,8 @@ export const getApp = createAsyncThunk(
     'app/getApp',
     async (domain, thunkAPI) => {
         try {
-            return await appService.getApp(domain);
+            const token = thunkAPI.getState()?.user?.user?.token || null;
+            return await appService.getApp(domain, token);
         } catch (error) {
             const message =
                 (error.response &&
@@ -196,6 +198,46 @@ export const deleteApp = createAsyncThunk(
 );
 
 
+// Rate app
+export const rateApp = createAsyncThunk(
+    'app/rateApp',
+    async (data, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().user.user.token;
+            return await appService.rateApp(data, token);
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.msg) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+
+// Delete rating
+export const deleteRating = createAsyncThunk(
+    'app/deleteRating',
+    async (appId, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().user.user.token;
+            return await appService.deleteRating(appId, token);
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.msg) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+
 // Create slice
 const appSlice = createSlice({
     name: 'apps',
@@ -204,6 +246,7 @@ const appSlice = createSlice({
         // Reset apps state
         resetApp: (state) => {
             state.apps = [];
+            state.detailedApp = null;
             state.appLoading = null;
             state.isError = false;
             state.isSuccess = false;
@@ -216,13 +259,13 @@ const appSlice = createSlice({
             state.msg = '';
         },
     }, extraReducers: (builder) => {
-        // get app by domain name
+        // get get my apps
         builder.addCase(getMe.pending, (state, action) => {
             state.isLoading = true;
         });
         builder.addCase(getMe.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.apps = action.payload;
+            state.apps = action.payload.app;
         });
         builder.addCase(getMe.rejected, (state, action) => {
             state.isLoading = false;
@@ -232,16 +275,15 @@ const appSlice = createSlice({
 
         // get app by domain name
         builder.addCase(getApp.pending, (state, action) => {
-            state.isLoading = true;
+            state.appLoading = action.meta.arg;
         });
         builder.addCase(getApp.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.apps = [...state.apps, ...action.payload];
-            state.offset = state.offset + state.limit;
-            state.hasMore = action.payload.length === state.limit;
+            state.appLoading = null;
+            state.detailedApp = action.payload.app;
+            state.detailedApp.userRating = action.payload.userRating;
         });
         builder.addCase(getApp.rejected, (state, action) => {
-            state.isLoading = false;
+            state.appLoading = null;
             state.isError = true;
             state.msg = action.payload;
         });
@@ -370,6 +412,18 @@ const appSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.msg = action.payload;
+        });
+
+        builder.addCase(rateApp.fulfilled, (state, action) => {
+            state.detailedApp.userRating = action.payload.userRating;
+            state.detailedApp.upVotes = action.payload.appUpvote;
+            state.detailedApp.downVotes = action.payload.appDownvote;
+        });
+
+        builder.addCase(deleteRating.fulfilled, (state, action) => {
+            state.detailedApp.userRating = '0';
+            state.detailedApp.upVotes = action.payload.appUpvote;
+            state.detailedApp.downVotes = action.payload.appDownvote;
         });
     }
 });

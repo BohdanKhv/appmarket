@@ -1,4 +1,5 @@
 const App = require('../models/appModel');
+const Rating = require('../models/ratingModel');
 const Developer = require('../models/developerModel');
 const cheerio = require('cheerio');
 const axios = require('axios');
@@ -83,13 +84,20 @@ const getMe = async (req, res) => {
 // Public
 const getApp = async (req, res) => {
     try {
-        const app = App.findOne({ domain: req.params.domain });
+        const app = await App.findOne({ domain: req.params.domain }).populate('developer');
         if (app) {
-            return res.status(200).json(app);
+            let userRating = '0'
+            if(req.user) {
+                const rating = await Rating.findOne({ app: app._id, user: req.user._id });
+                userRating = rating?.rating || '0';
+            }
+
+            return res.status(200).json({app, userRating});
         } else {
             return res.status(404).json({ msg: 'App not found' });
         }
     } catch (err) {
+        console.log(err);
         return res.status(500).json({ msg: "Server error" });
     }
 }
@@ -119,7 +127,7 @@ const getAppsByCategory = async (req, res) => {
     try {
         const { limit, offset } = req.query;
 
-        const apps = App.find({ categories: req.params.category }).limit(limit).skip(offset);
+        const apps = await App.find({ categories: req.params.category }).limit(limit).skip(offset);
         if (apps) {
             return res.status(200).json(apps);
         } else {
@@ -138,7 +146,7 @@ const getAppsBySearch = async (req, res) => {
     try {
         const { limit, offset } = req.query;
 
-        const apps = App.find({ $text: { $search: req.params.query } }).limit(limit).skip(offset);
+        const apps = await App.find({ $text: { $search: req.params.query } }).limit(limit).skip(offset);
         if (apps) {
             return res.status(200).json(apps);
         } else {

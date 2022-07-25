@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { protect } = require('../middleware/authMiddleware');
+const { protect, isAuth } = require('../middleware/authMiddleware');
 const {
     getMe,
     getApp,
@@ -15,7 +15,7 @@ const {
 
 router.route('/developer/me').get(protect, getMe);
 router.route('/meta/:domain').get(protect, updateAppMeta);
-router.route('/app/:domain').get(getApp);
+router.route('/app/:domain').get(isAuth, getApp);
 router.route('/app/:domain').delete(protect, deleteApp);
 router.route('/developer/:id').get(getDeveloperApps);
 router.route('/category/:category').get(getAppsByCategory);

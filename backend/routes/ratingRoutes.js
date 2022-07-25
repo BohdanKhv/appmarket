@@ -10,7 +10,7 @@ const {
 
 router.route('/app/:domain').get(getRatingCountByApp);
 router.route('/').post(protect, createRating);
-router.route('/:id').delete(protect, deleteRating);
+router.route('/:appId').delete(protect, deleteRating);
 
 
 module.exports = router;

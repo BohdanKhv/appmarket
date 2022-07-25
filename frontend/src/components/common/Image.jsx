@@ -18,9 +18,9 @@ const Image = ({
         <div
             style={{
                 background: isImageLoaded ? 'none' : 'var(--color-secondary',
-                width: isImageLoaded ? 'auto' : '100%',
-                height: isImageLoaded ? 'auto' : '100%',
-                minHeight: isImageLoaded ? 'auto' : '100%',
+                width: isImageLoaded ? 'inherit' : '100%',
+                height: isImageLoaded ? 'inherit' : '100%',
+                minHeight: isImageLoaded ? 'inherit' : '100%',
             }}
         >
             <img
