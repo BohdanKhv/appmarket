@@ -13,7 +13,7 @@ const listSchema = new mongoose.Schema({
         ref: 'App',
         required: true
     },
-    list: {
+    name: {
         type: String,
         required: true
     }

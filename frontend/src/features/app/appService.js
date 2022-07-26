@@ -131,6 +131,34 @@ const deleteRating = async (appId, token) => {
 }
 
 
+// Add app to list
+const addToList = async (data, token) => {
+    const conf = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.post(`/api/lists/${data.appId}`, data, conf);
+    return response.data;
+}
+
+
+// Remove app from list
+const removeFromList = async (appId, token) => {
+    const conf = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.delete(`/api/lists/${appId}`, conf);
+    return response.data;
+}
+
+
 const profileService = {
     getMe,
     getApp,
@@ -142,7 +170,9 @@ const profileService = {
     updateApp,
     deleteApp,
     rateApp,
-    deleteRating
+    deleteRating,
+    addToList,
+    removeFromList
 }
 
 export default profileService;

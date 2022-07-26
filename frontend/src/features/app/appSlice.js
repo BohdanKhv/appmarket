@@ -217,7 +217,6 @@ export const rateApp = createAsyncThunk(
     }
 );
 
-
 // Delete rating
 export const deleteRating = createAsyncThunk(
     'app/deleteRating',
@@ -225,6 +224,44 @@ export const deleteRating = createAsyncThunk(
         try {
             const token = thunkAPI.getState().user.user.token;
             return await appService.deleteRating(appId, token);
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.msg) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+// Rate app
+export const addToList = createAsyncThunk(
+    'app/addToList',
+    async (data, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().user.user.token;
+            return await appService.addToList(data, token);
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.msg) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+// Delete rating
+export const removeFromList = createAsyncThunk(
+    'app/removeFromList',
+    async (appId, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().user.user.token;
+            return await appService.removeFromList(appId, token);
         } catch (error) {
             const message =
                 (error.response &&
@@ -281,6 +318,7 @@ const appSlice = createSlice({
             state.appLoading = null;
             state.detailedApp = action.payload.app;
             state.detailedApp.userRating = action.payload.userRating;
+            state.detailedApp.userFavorite = action.payload.userFavorite;
         });
         builder.addCase(getApp.rejected, (state, action) => {
             state.appLoading = null;
@@ -424,6 +462,18 @@ const appSlice = createSlice({
             state.detailedApp.userRating = '0';
             state.detailedApp.upVotes = action.payload.appUpvote;
             state.detailedApp.downVotes = action.payload.appDownvote;
+            state.msg = action.payload;
+        });
+
+        builder.addCase(addToList.fulfilled, (state, action) => {
+            state.detailedApp.userFavorite = true;
+            state.detailedApp.favorites = state.detailedApp.favorites + 1;
+        });
+
+        builder.addCase(removeFromList.fulfilled, (state, action) => {
+            state.detailedApp.userFavorite = false;
+            state.detailedApp.favorites = state.detailedApp.favorites - 1;
+            state.msg = action.payload;
         });
     }
 });

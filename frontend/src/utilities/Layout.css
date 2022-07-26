@@ -249,4 +249,16 @@
     .flex-sm-order-2 {
         order: 2;
     }
+
+    .w-sm-100 {
+        width: 100%!important;
+    }
+
+    .align-center-sm {
+        align-items: center;
+    }
+
+    .flex-grow-1-sm {
+        flex-grow: 1;
+    }
 }

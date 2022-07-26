@@ -1,5 +1,6 @@
 const App = require('../models/appModel');
 const Rating = require('../models/ratingModel');
+const List = require('../models/listModel');
 const Developer = require('../models/developerModel');
 const cheerio = require('cheerio');
 const axios = require('axios');
@@ -87,12 +88,16 @@ const getApp = async (req, res) => {
         const app = await App.findOne({ domain: req.params.domain }).populate('developer');
         if (app) {
             let userRating = '0'
+            let userFavorite = false
             if(req.user) {
                 const rating = await Rating.findOne({ app: app._id, user: req.user._id });
                 userRating = rating?.rating || '0';
+
+                const favorite = await List.findOne({ app: app._id, user: req.user._id, name: 'Favorites' });
+                userFavorite = favorite ? true : false;
             }
 
-            return res.status(200).json({app, userRating});
+            return res.status(200).json({app, userRating, userFavorite});
         } else {
             return res.status(404).json({ msg: 'App not found' });
         }

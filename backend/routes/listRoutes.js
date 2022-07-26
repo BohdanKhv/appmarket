@@ -8,9 +8,9 @@ const {
 } = require('../controllers/listControllers');
 
 
-router.route('/add/:domain').post(protect, addList);
-router.route('/remove/:domain').post(protect, removeList);
-router.route('/list').get(protect, getLists);
+router.route('/:appId').post(protect, addList);
+router.route('/:appId').delete(protect, removeList);
+router.route('/').get(protect, getLists);
 
 
 module.exports = router;

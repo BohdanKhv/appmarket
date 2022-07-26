@@ -30,9 +30,9 @@
     transition: 0.3s;
 }
 
-.btn svg {
+/* .btn svg {
     stroke: #fff;
-}
+} */
 
 .btn.spinner svg {
     width: 24.5px;
@@ -48,7 +48,7 @@
 
 .btn.btn-text.btn-secondary {
     color: var(--text-dark);
-    fill: var(--color-secondary);
+    fill: var(--text-dark);
 }
 
 .btn.btn-text:hover,
@@ -208,7 +208,7 @@
 .btn.btn-outline.btn-secondary {
     background: transparent;
     color: var(--color-dark);
-    fill: var(--color-dark);
+    fill: var(--color-dark)!important;
     border-color: var(--color-secondary);
 }
 
