@@ -336,6 +336,9 @@
     width: 100%;
 }
 
+.mx-w-xs {
+    max-width: 400px;
+}
 .mx-w-sm {
     max-width: 640px;
 }
@@ -412,4 +415,14 @@
 }
 .z-99 {
     z-index: 99;
+}
+
+
+@media (max-width: 768px) {
+    .mx-w-sm-sm {
+        max-width: 640px;
+    }
+    .mx-w-sm-xs {
+        max-width: 400px;
+    }
 }

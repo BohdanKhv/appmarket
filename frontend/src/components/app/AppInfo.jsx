@@ -36,7 +36,7 @@ const AppInfo = () => {
                 {detailedApp.developer.name}
               </Link>
               {detailedApp.meta.description && (
-                <p className="fs-4 mt-4">{detailedApp.meta.description}</p>
+                <p className="fs-4 mt-4 mx-w-xs">{detailedApp.meta.description}</p>
               )}
             </div>
             <div className="flex flex-col flex-sm-order-1 align-center-sm flex-grow-1-sm">
