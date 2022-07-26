@@ -25,7 +25,7 @@ const AppTab = () => {
         <div>
             <CreateApp />
             <div className="flex flex-wrap gap-3 mt-3">
-                {apps.map((app, index) => (
+                {apps?.map((app, index) => (
                     <AppItem key={index} app={app} showMenu />
                 ))}
             </div>

@@ -302,7 +302,7 @@ const appSlice = createSlice({
         });
         builder.addCase(getMe.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.apps = action.payload.app;
+            state.apps = action.payload;
         });
         builder.addCase(getMe.rejected, (state, action) => {
             state.isLoading = false;

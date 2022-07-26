@@ -30,7 +30,7 @@ const AppInfo = () => {
           <div className="flex flex-sm-wrap justify-between gap-5">
             <div className="flex flex-col text-capitalize flex-sm-order-2 align-center-sm flex-grow-1-sm text-center-sm">
               <h1 className="fs-1">
-                {detailedApp?.meta?.title || detailedApp.domain.split('.')[0]}
+                {detailedApp?.ogMeta?.title ? detailedApp.ogMeta.title : detailedApp.meta.title ? detailedApp.meta.title : detailedApp.domain.split('.')[0]}
               </h1>
               <Link to={`/store/dev?id=${detailedApp.developer._id}`} className="fs-2 text-primary bold mt-4">
                 {detailedApp.developer.name}
