@@ -36,6 +36,10 @@ import ProfileInfo from "./user/ProfileInfo";
 
 import AuthGate from "./gate/AuthGate";
 
+import ReviewItem from "./review/ReviewItem";
+import Reviews from "./review/Reviews";
+import CreateReview from "./review/CreateReview";
+
 
 export {
     Button,
@@ -75,4 +79,8 @@ export {
     ProfileInfo,
 
     AuthGate,
+
+    ReviewItem,
+    Reviews,
+    CreateReview,
 }

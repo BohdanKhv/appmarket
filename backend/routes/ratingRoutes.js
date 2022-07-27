@@ -2,15 +2,19 @@ const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/authMiddleware');
 const {
-    getRatingCountByApp,
+    getRatingsByAppId,
     createRating,
-    deleteRating
+    deleteRating,
+    createReview,
+    deleteReview
 } = require('../controllers/ratingControllers');
 
 
-router.route('/app/:domain').get(getRatingCountByApp);
-router.route('/').post(protect, createRating);
-router.route('/:appId').delete(protect, deleteRating);
+router.route('/app/:domain').get(getRatingsByAppId);
+router.route('/rating').post(protect, createRating);
+router.route('/rating/delete').post(protect, deleteRating);
+router.route('/review/').post(protect, createReview);
+router.route('/review/delete').post(protect, deleteReview);
 
 
 module.exports = router;

@@ -4,8 +4,12 @@ const mongoose = require('mongoose');
 const ratingSchema = new mongoose.Schema({
     rating: {
         type: String,
-        enum: ['1', '-1'],
-        required: true
+        enum: ['1', '-1'], // 1 = good, -1 = bad
+        required: false
+    },
+    review: {
+        type: String,
+        required: false
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

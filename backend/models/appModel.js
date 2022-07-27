@@ -56,7 +56,7 @@ const appSchema = new mongoose.Schema({
         required: false,
         default: 0
     },
-    comments: {
+    reviews: {
         type: Number,
         required: false,
         default: 0

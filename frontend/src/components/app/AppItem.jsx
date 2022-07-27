@@ -12,7 +12,7 @@ const AppItem = ({ app, showMenu }) => {
 
 
     return (
-        <div className="grid grid-col-min-5 bg-hover p-3 border-radius pointer">
+        <div className="bg-hover p-3 border-radius pointer">
             <div className="flex justify-between">
                 <Link to={`/store/details?domain=${app.domain}`}
                     style={{
@@ -23,7 +23,7 @@ const AppItem = ({ app, showMenu }) => {
                     className="me-3 overflow-hidden border-radius box-shadow-sm"
                 >
                     <img
-                        src={app?.ogMeta?.image ? app?.ogMeta?.image : app?.meta?.icon}
+                        src={app?.ogMeta?.image ? app?.ogMeta?.image.startsWith('http') ? app?.ogMeta?.image : `http://${app.domain}/${app?.ogMeta?.image}` : app?.meta?.icon}
                         alt={app?.ogMeta?.title ? app.ogMeta.title : app.meta.title ? app.meta.title : app.domain.split('.')[0]}
                         className="obj-cover z-1"
                         width={150}
@@ -31,8 +31,8 @@ const AppItem = ({ app, showMenu }) => {
                     />
                 </Link>
                 <div className="flex flex-col flex-grow-1 justify-between flex-grow">
-                    <div className="fs-4">
-                        {app?.ogMeta?.title ? app.ogMeta.title : app.meta.title ? app.meta.title : app.domain}
+                    <div className="fs-4 text-capitalize">
+                        {app?.ogMeta?.title?.length >= app.domain.length ? app.domain.split('.')[0] : app?.ogMeta?.title ? app.ogMeta.title : app.meta.title ? app.meta.title : app.domain}
                     </div>
                     <div className="fs-5 text-secondary">
                         {app.domain}

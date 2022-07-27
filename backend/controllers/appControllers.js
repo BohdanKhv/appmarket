@@ -9,15 +9,21 @@ const axios = require('axios');
 
 const getAppMeta = async (domain) => {
     try {
+        const config = {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36',
+            }
+        }
+
         const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
         const domainMatch = domainRegex.exec(domain);
         const domainNew = domainMatch[1];
 
-        const appInfo = await axios.get("https://" + domainNew);
+        const appInfo = await axios.get("http://" + domainNew, config);
         const $ = cheerio.load(appInfo.data);
 
         const meta = {
-            title: $('title').text(),
+            title: $('title')?.text(),
             description: $('meta[name="description"]')?.attr('content'),
             keywords: $('meta[name="keywords"]')?.attr('content'),
             classification: $('meta[name="classification"]')?.attr('content'),
@@ -57,7 +63,7 @@ const getAppMeta = async (domain) => {
 
         return { meta, ogMeta, twitterMeta, tags, msg: "Success" };
     } catch (err) {
-        // console.log(err);
+        console.log(err);
         return {msg: "Error getting app info"};
     }
 }
@@ -87,17 +93,17 @@ const getApp = async (req, res) => {
     try {
         const app = await App.findOne({ domain: req.params.domain }).populate('developer');
         if (app) {
-            let userRating = '0'
             let userFavorite = false
+            let userReview = null
             if(req.user) {
                 const rating = await Rating.findOne({ app: app._id, user: req.user._id });
-                userRating = rating?.rating || '0';
+                userReview = rating ? rating : null;
 
                 const favorite = await List.findOne({ app: app._id, user: req.user._id, name: 'Favorites' });
                 userFavorite = favorite ? true : false;
             }
 
-            return res.status(200).json({app, userRating, userFavorite});
+            return res.status(200).json({app, userFavorite, userReview});
         } else {
             return res.status(404).json({ msg: 'App not found' });
         }
@@ -303,6 +309,33 @@ const deleteApp = async (req, res) => {
 
 
 
+// GET /apps/app/scrape/top-list
+// Returns the top apps
+// Public
+const scrapeTopApps = async (req, res) => {
+    try {
+        const response = await axios.get("https://www.similarweb.com/");
+        const $ = await cheerio.load(response.data);
+        const topApps = [];
+
+        // $('.tl-list__link')?.each((i, el) => {
+        //     const data = {
+        //         url: $(el).attr('href'),
+        //         title: $(el).text()
+        //     }
+
+        //     topApps.push(data);
+        // });
+
+        return res.status(200).json();
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ msg: "Server error" });
+    }
+}
+
+
+
 module.exports = {
     getMe,
     getApp,
@@ -313,4 +346,5 @@ module.exports = {
     updateAppMeta,
     updateApp,
     deleteApp,
+    scrapeTopApps
 }

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import appService from './appService';
+import { createReview, deleteReview, deleteRating, rateApp } from '../rating/ratingSlice';
 
 
 const initialState = {
@@ -197,45 +198,6 @@ export const deleteApp = createAsyncThunk(
     }
 );
 
-
-// Rate app
-export const rateApp = createAsyncThunk(
-    'app/rateApp',
-    async (data, thunkAPI) => {
-        try {
-            const token = thunkAPI.getState().user.user.token;
-            return await appService.rateApp(data, token);
-        } catch (error) {
-            const message =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.msg) ||
-                error.message ||
-                error.toString();
-            return thunkAPI.rejectWithValue(message);
-        }
-    }
-);
-
-// Delete rating
-export const deleteRating = createAsyncThunk(
-    'app/deleteRating',
-    async (appId, thunkAPI) => {
-        try {
-            const token = thunkAPI.getState().user.user.token;
-            return await appService.deleteRating(appId, token);
-        } catch (error) {
-            const message =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.msg) ||
-                error.message ||
-                error.toString();
-            return thunkAPI.rejectWithValue(message);
-        }
-    }
-);
-
 // Rate app
 export const addToList = createAsyncThunk(
     'app/addToList',
@@ -317,7 +279,7 @@ const appSlice = createSlice({
         builder.addCase(getApp.fulfilled, (state, action) => {
             state.appLoading = null;
             state.detailedApp = action.payload.app;
-            state.detailedApp.userRating = action.payload.userRating;
+            state.detailedApp.userReview = action.payload.userReview;
             state.detailedApp.userFavorite = action.payload.userFavorite;
         });
         builder.addCase(getApp.rejected, (state, action) => {
@@ -453,13 +415,13 @@ const appSlice = createSlice({
         });
 
         builder.addCase(rateApp.fulfilled, (state, action) => {
-            state.detailedApp.userRating = action.payload.userRating;
+            state.detailedApp.userReview.rating = action.payload.userRating;
             state.detailedApp.upVotes = action.payload.appUpvote;
             state.detailedApp.downVotes = action.payload.appDownvote;
         });
 
         builder.addCase(deleteRating.fulfilled, (state, action) => {
-            state.detailedApp.userRating = '0';
+            state.detailedApp.userReview.rating = '0';
             state.detailedApp.upVotes = action.payload.appUpvote;
             state.detailedApp.downVotes = action.payload.appDownvote;
             state.msg = action.payload;
@@ -474,6 +436,16 @@ const appSlice = createSlice({
             state.detailedApp.userFavorite = false;
             state.detailedApp.favorites = state.detailedApp.favorites - 1;
             state.msg = action.payload;
+        });
+
+        builder.addCase(createReview.fulfilled, (state, action) => {
+            state.detailedApp.userReview.review = action.payload.review.review;
+            state.detailedApp.reviews = state.detailedApp.reviews + 1;
+        });
+
+        builder.addCase(deleteReview.fulfilled, (state, action) => {
+            state.detailedApp.userReview.review = undefined;
+            state.detailedApp.reviews = state.detailedApp.reviews - 1;
         });
     }
 });

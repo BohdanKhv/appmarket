@@ -24,13 +24,13 @@ const AppTab = () => {
     return (
         <div>
             <CreateApp />
-            <div className="flex flex-wrap gap-3 mt-3">
+            <div className="grid grid-col-min-5 gap-3 mt-3">
                 {apps?.map((app, index) => (
                     <AppItem key={index} app={app} showMenu />
                 ))}
             </div>
             {isLoading &&
-                <div className="flex flex-wrap gap-3 mt-3">
+                <div className="grid grid-col-min-5 gap-3 mt-3">
                     {Array
                         .from({ length: 7 })
                         .map((_, index) => (

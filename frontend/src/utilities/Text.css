@@ -119,6 +119,18 @@ a {
 .text-light {
     color: var(--text-light);
 }
+.fill-danger svg {
+    fill: var(--color-danger);
+}
+.fill-success svg {
+    fill: var(--color-success);
+}
+.fill-warning svg {
+    fill: var(--color-warning);
+}
+.fill-info svg {
+    fill: var(--color-info);
+}
 .fill-light svg {
     fill: var(--text-light);
 }

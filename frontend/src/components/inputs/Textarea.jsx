@@ -22,7 +22,7 @@ const Textarea = ({children, icon, type, name, label, value, onChange, bodyStyle
     const onChangeValue = (e) => {
         onChange(e);
         // auto resize height of textarea when typing
-        e.target.style.height = e.target.scrollHeight + 'px';
+        // e.target.style.height = e.target.scrollHeight + 'px';
     }
 
     return (

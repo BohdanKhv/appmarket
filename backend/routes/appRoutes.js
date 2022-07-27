@@ -10,7 +10,8 @@ const {
     createApp,
     updateAppMeta,
     updateApp,
-    deleteApp
+    deleteApp,
+    scrapeTopApps
 } = require('../controllers/appControllers');
 
 router.route('/developer/me').get(protect, getMe);
@@ -22,6 +23,7 @@ router.route('/category/:category').get(getAppsByCategory);
 router.route('/search/:query').get(getAppsBySearch);
 router.route('/').post(protect, createApp);
 router.route('/', protect).put(updateApp);
+router.route('/scrape/top-list').get(scrapeTopApps);
 
 
 module.exports = router;

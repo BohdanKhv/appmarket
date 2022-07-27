@@ -21,8 +21,8 @@ const Dashboard = () => {
                   items={dashboardTabs}
               />
               <div className="border-top pt-4 pb-3 px-3">
-                {activeTab === 0 && <DevTab/>}
-                {activeTab === 1 && <AppTab/>}
+                {activeTab === 0 && <AppTab/>}
+                {activeTab === 1 && <DevTab/>}
               </div>
             </div>
           </>

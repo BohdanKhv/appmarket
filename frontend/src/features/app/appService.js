@@ -103,34 +103,6 @@ const deleteApp = async (domain, token) => {
 }
 
 
-// Rate app
-const rateApp = async (data, token) => {
-    const conf = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }
-
-    const response = await axios.post(`/api/ratings/`, data, conf);
-    return response.data;
-}
-
-
-// Delete rating
-const deleteRating = async (appId, token) => {
-    const conf = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }
-
-    const response = await axios.delete(`/api/ratings/${appId}`, conf);
-    return response.data;
-}
-
-
 // Add app to list
 const addToList = async (data, token) => {
     const conf = {
@@ -169,8 +141,6 @@ const profileService = {
     updateAppMeta,
     updateApp,
     deleteApp,
-    rateApp,
-    deleteRating,
     addToList,
     removeFromList
 }
